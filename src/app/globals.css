@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-urbanist: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-primary: #D2251F;
+  --color-primary-hover: #B31C17;
+  --color-secondary: #FF604B;
+  --color-dark: #0F172A;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  font-family: var(--font-urbanist);
+  color: #18181B;
+  background-color: #FFFFFF;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-urbanist);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Kortrijk Xpo signature button classes */
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.85rem 2rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.c-btn--primary {
+  background-color: #D2251F;
+  color: #FFFFFF;
+  border: 1.5px solid #D2251F;
+}
+
+.c-btn--primary:hover {
+  background-color: #B31C17;
+  border-color: #B31C17;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(210, 37, 31, 0.35);
+}
+
+.c-btn--secondary {
+  background-color: transparent;
+  color: #18181B;
+  border: 1.5px solid #18181B;
+}
+
+.c-btn--secondary:hover {
+  background-color: #18181B;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+}
+
+.c-btn--white {
+  background-color: #FFFFFF;
+  color: #D2251F;
+  border: 1.5px solid #FFFFFF;
+}
+
+.c-btn--white:hover {
+  background-color: #FFF1F0;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+}
+
+.c-btn--outline-white {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1.5px solid #FFFFFF;
+}
+
+.c-btn--outline-white:hover {
+  background-color: #FFFFFF;
+  color: #D2251F;
+  transform: translateY(-2px);
+}
+
+/* Wiggle animation */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.05); }
+}
+
+.animate-wiggle {
+  animation: wiggle 2.5s ease-in-out infinite;
+}
+
+/* Diagonal chevron / cut clip-paths */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+}
+
+.clip-chevron-right {
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+}
