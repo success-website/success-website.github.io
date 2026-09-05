@@ -20,6 +20,7 @@ import FloemaCursor from "@/components/FloemaCursor";
 import FloemaLoader from "@/components/FloemaLoader";
 import SmoothScroll from "@/components/SmoothScroll";
 import KineticScrollText from "@/components/KineticScrollText";
+import SideScrollNav from "@/components/SideScrollNav";
 
 export default function HomePage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -47,6 +48,9 @@ export default function HomePage() {
 
         {/* Hubtown Luminescent Follower Cursor (Mouse devices) */}
         <FloemaCursor />
+
+        {/* Hubtown Fixed Side Scroll Tracker Rail (Single Page Navigation) */}
+        <SideScrollNav />
 
         {/* Floating Capsule Navbar */}
         <Navbar

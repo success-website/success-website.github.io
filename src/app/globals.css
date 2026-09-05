@@ -48,7 +48,6 @@ html.lenis, html.lenis body {
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 100px;
   font-family: var(--font-main);
   color: var(--color-ice);
