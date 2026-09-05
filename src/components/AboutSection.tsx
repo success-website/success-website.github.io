@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Factory, Award, MapPin, ArrowUpRight } from "lucide-react";
 import { COMPANY_INFO } from "@/data/websiteData";
 import { getAssetPath } from "@/lib/basePath";
@@ -11,6 +12,13 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imgParallaxY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
   const highlights = [
     {
       code: "BAY.SYS // 01",
@@ -33,7 +41,7 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
   ];
 
   return (
-    <section id="about" className="py-24 sm:py-32 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section ref={sectionRef} id="about" className="py-24 sm:py-32 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       {/* Background Radial Glow */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#7099FF]/5 blur-[120px] pointer-events-none" />
 
@@ -119,13 +127,15 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
               className="hubtown-beveled relative p-2 bg-[#040E24]/80 border border-[#D5E0FF]/20 group overflow-hidden"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#020A19] hubtown-beveled">
-                <Image
-                  src={getAssetPath("/images/Homepage_img.jpg")}
-                  alt="Success Engineering Tooling Bay"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+                <motion.div style={{ y: imgParallaxY, scale: 1.15 }} className="absolute inset-0 w-full h-full">
+                  <Image
+                    src={getAssetPath("/images/Homepage_img.jpg")}
+                    alt="Success Engineering Tooling Bay"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </motion.div>
 
                 {/* HUD Corner Accents */}
                 <div className="absolute top-4 left-4 pointer-events-none flex items-center gap-2">

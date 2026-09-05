@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowUpRight, ShieldCheck, Factory, Sparkles, MapPin, Compass, Radio } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, Radio } from "lucide-react";
 import { getAssetPath } from "@/lib/basePath";
 
 interface BannerPreloaderProps {
@@ -12,13 +12,28 @@ interface BannerPreloaderProps {
 }
 
 export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
+  const heroRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax Layer Transforms
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const yTitle = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const yCard1 = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const yCard2 = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const yCard3 = useTransform(scrollYProgress, [0, 1], [0, 90]);
+
   return (
     <section
+      ref={heroRef}
       id="home"
       className="relative min-h-screen bg-[#020A19] text-[#D5E0FF] overflow-hidden pt-28 sm:pt-36 pb-16 flex flex-col justify-between"
     >
-      {/* Cinematic Ambient Glows & Grid Mesh (Hubtown Style) */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Cinematic Ambient Glows & Grid Mesh with Parallax */}
+      <motion.div style={{ y: yBg }} className="absolute inset-0 pointer-events-none">
         {/* Deep radial background lighting */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#7099FF]/15 blur-[140px] rounded-full" />
         <div className="absolute top-10 right-10 w-[400px] h-[400px] bg-[#38BDF8]/10 blur-[100px] rounded-full" />
@@ -29,7 +44,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
             <div key={i} className="border-r border-[#D5E0FF] h-full hidden lg:block" />
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Hero Container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
@@ -99,15 +114,16 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
           </motion.div>
         </div>
 
-        {/* Cinematic Monolith Image Cards (Hubtown 3D Geometry Aesthetic) */}
+        {/* Cinematic Monolith Image Cards (Hubtown 3D Geometry Aesthetic with Parallax) */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.2, 0, 0, 1] }}
           className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {/* Card 1: 250T Press Line */}
-          <div
+          {/* Card 1: 250T Press Line (Parallax Speed 1) */}
+          <motion.div
+            style={{ y: yCard1 }}
             data-cursor="STAMPING"
             className="hubtown-beveled p-5 group cursor-pointer"
           >
@@ -135,10 +151,11 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
             <p className="mt-2 text-xs text-[#D5E0FF]/60 leading-relaxed font-mono">
               Deep-draw stamping, automated de-coiling, progressive dies.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Card 2: Precision Toolroom */}
-          <div
+          {/* Card 2: Precision Toolroom (Parallax Speed 2 - Counter/Ascending) */}
+          <motion.div
+            style={{ y: yCard2 }}
             data-cursor="TOOLROOM"
             className="hubtown-beveled p-5 group cursor-pointer"
           >
@@ -166,10 +183,11 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
             <p className="mt-2 text-xs text-[#D5E0FF]/60 leading-relaxed font-mono">
               Wire-cut EDM, CNC surface grinding, hardened D2/D3 alloys.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Card 3: Robotic Welding */}
-          <div
+          {/* Card 3: Robotic Welding (Parallax Speed 3) */}
+          <motion.div
+            style={{ y: yCard3 }}
             data-cursor="WELDING"
             className="hubtown-beveled p-5 group cursor-pointer sm:col-span-2 lg:col-span-1"
           >
@@ -197,7 +215,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
             <p className="mt-2 text-xs text-[#D5E0FF]/60 leading-relaxed font-mono">
               Certified TIG/MIG/Arc welding with custom laser-guided fixtures.
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 

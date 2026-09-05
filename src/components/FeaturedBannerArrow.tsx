@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { COMPANY_INFO } from "@/data/websiteData";
 import { getAssetPath } from "@/lib/basePath";
@@ -11,19 +12,29 @@ interface FeaturedBannerArrowProps {
 }
 
 export default function FeaturedBannerArrow({ onOpenQuote }: FeaturedBannerArrowProps) {
+  const bannerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: bannerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const plateParallaxY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
   return (
-    <section className="py-20 sm:py-28 bg-[#020A19] text-[#D5E0FF] overflow-hidden border-t border-[#D5E0FF]/10">
+    <section ref={bannerRef} className="py-20 sm:py-28 bg-[#020A19] text-[#D5E0FF] overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="hubtown-beveled relative overflow-hidden shadow-2xl flex flex-col lg:flex-row bg-gradient-to-r from-[#040E24] via-[#061331] to-[#040E24] border border-[#D5E0FF]/20">
           {/* Left Media (Photo of calibrated metal stamping & plates) */}
-          <div className="relative w-full lg:w-1/2 min-h-[340px] lg:min-h-[480px]">
-            <Image
-              src={getAssetPath("/images/Metalplates.png")}
-              alt="Success Engineering Precision Quality Metal Plates"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+          <div className="relative w-full lg:w-1/2 min-h-[340px] lg:min-h-[480px] overflow-hidden">
+            <motion.div style={{ y: plateParallaxY, scale: 1.15 }} className="absolute inset-0 w-full h-full">
+              <Image
+                src={getAssetPath("/images/Metalplates.png")}
+                alt="Success Engineering Precision Quality Metal Plates"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </motion.div>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#040E24]/40 to-[#040E24] hidden lg:block" />
             <div className="absolute top-4 left-4">
               <span className="hubtown-tag text-[10px]">
