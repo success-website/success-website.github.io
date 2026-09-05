@@ -16,6 +16,8 @@ import QualityAssurance from "@/components/QualityAssurance";
 import ClientEcosystem from "@/components/ClientEcosystem";
 import NewsCaseStudies from "@/components/NewsCaseStudies";
 import Footer from "@/components/Footer";
+import FloemaCursor from "@/components/FloemaCursor";
+import FloemaLoader from "@/components/FloemaLoader";
 
 export default function HomePage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -36,8 +38,14 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-zinc-900 selection:bg-[#D2251F] selection:text-white">
-      {/* Top Navbar */}
+    <div className="min-h-screen flex flex-col bg-[#F2EFEA] text-[#241F21] selection:bg-[#241F21] selection:text-[#E9E778] relative">
+      {/* Floema Signature Top Progress Line & Curtain Reveal */}
+      <FloemaLoader />
+
+      {/* Floema Custom Magnetic Follower Cursor (Mouse devices) */}
+      <FloemaCursor />
+
+      {/* Floating Capsule Navbar */}
       <Navbar
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenQuote={() => {
@@ -59,14 +67,14 @@ export default function HomePage() {
         }}
       />
 
-      {/* Fullsite Search Modal */}
+      {/* Search Modal */}
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onSelectService={handleSelectServiceFromSearch}
       />
 
-      {/* Interactive Request a Quote Modal */}
+      {/* Request a Quote Modal */}
       <QuoteModal
         isOpen={isQuoteOpen}
         onClose={() => setIsQuoteOpen(false)}
@@ -75,7 +83,7 @@ export default function HomePage() {
 
       {/* Main Page Flow */}
       <main className="flex-1">
-        {/* 1. Kortrijk Xpo Signature Curtain Arrow Banner Preloader & Hero */}
+        {/* 1. Floema Hero: Staggered Line Reveal, Floating Tilt Cards & KPI Counters */}
         <BannerPreloader
           onOpenQuote={() => {
             setQuotePreselectedService("");
@@ -91,12 +99,12 @@ export default function HomePage() {
           }}
         />
 
-        {/* 3. Core Capabilities & 5 Production Bays */}
+        {/* 3. Core Capabilities: 5 Production Bays with Crossfade Previews */}
         <ServicesShowcase
           onOpenQuoteWithService={handleOpenQuoteWithService}
         />
 
-        {/* 4. Small Arrow Cutout Banner (Kortrijk Xpo c-banner-small-default) */}
+        {/* 4. Plant Audit & Inspection Banner */}
         <FeaturedBannerArrow
           onOpenQuote={() => {
             setQuotePreselectedService("");
@@ -104,10 +112,10 @@ export default function HomePage() {
           }}
         />
 
-        {/* 5. Production Bay Slider & Lightbox (Kortrijk Xpo c-media-gallery + wiggle) */}
+        {/* 5. Production Bay Slider & Lightbox Inspection */}
         <MediaGallerySlider />
 
-        {/* 6. Sticky Stacking Cards (Kortrijk Xpo c-stacking-cards) */}
+        {/* 6. Sticky Stacking Cards (Architectural Pillars) */}
         <StackingCards
           onOpenQuote={() => {
             setQuotePreselectedService("");
@@ -115,20 +123,20 @@ export default function HomePage() {
           }}
         />
 
-        {/* 7. Infinite Running Typography Ticker (Kortrijk Xpo c-branding-element) */}
+        {/* 7. Dual-Track Infinite Running Typography Marquee */}
         <BrandingMarquee />
 
         {/* 8. ISO 9001:2015 & UCAS India Quality Section with Certificate Viewer */}
         <QualityAssurance />
 
-        {/* 9. Trusted Client Ecosystem (Godrej, Johnson, Schwing, etc.) */}
+        {/* 9. Trusted Client Ecosystem (Godrej, Johnson Lifts, Schwing, Rane TRW) */}
         <ClientEcosystem />
 
-        {/* 10. News & Insights (Kortrijk Xpo c-card-landscape) */}
+        {/* 10. Editorial Insights & Industry Bulletins */}
         <NewsCaseStudies />
       </main>
 
-      {/* Modern Kortrijk Xpo-inspired Footer */}
+      {/* Floema Deep Stone Footer with Watermark Typography */}
       <Footer />
     </div>
   );

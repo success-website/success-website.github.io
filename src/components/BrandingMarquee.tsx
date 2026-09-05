@@ -3,49 +3,45 @@
 import React from "react";
 
 export default function BrandingMarquee() {
-  const textItems = [
-    "SUCCESS ENGINEERING ENTERPRISES",
-    "PRESS & PRECISION MANUFACTURING",
+  const items = [
+    "PRECISION METAL STAMPING",
+    "PROGRESSIVE PRESS TOOLS",
     "ISO 9001:2015 CERTIFIED",
-    "20+ YEARS OF INDUSTRIAL EXCELLENCE",
-    "HIGH TONNAGE STAMPING & FABRICATION",
-    "TOOL & DIE SPECIALISTS",
+    "AUTOMATED 250T HYDRAULIC LINE",
+    "STRUCTURAL ROBOTIC WELDING",
+    "TIER-1 AUTOMOTIVE SUPPLIER",
+    "TURNKEY SUB-ASSEMBLY",
+    "SIDCO INDUSTRIAL ESTATE",
   ];
 
   return (
-    <section className="bg-[#D2251F] py-10 sm:py-14 overflow-hidden select-none border-y border-white/20">
-      {/* Top Forward Marquee */}
-      <div className="flex whitespace-nowrap overflow-hidden">
-        <div className="flex gap-8 items-center animate-marquee">
-          {textItems.concat(textItems).map((text, idx) => (
-            <div key={idx} className="flex items-center gap-8">
-              <span className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white/95">
-                {text}
-              </span>
-              <span className="w-3 h-3 rounded-full bg-[#FF604B]" />
-            </div>
-          ))}
-        </div>
+    <div className="py-12 bg-[#241F21] text-[#F2EFEA] overflow-hidden select-none border-y border-white/10">
+      {/* Track 1 (Leftward) */}
+      <div className="flex animate-floema-marquee mb-4 whitespace-nowrap">
+        {Array.from({ length: 4 }).flatMap(() => items).map((text, i) => (
+          <div key={i} className="flex items-center gap-6 mx-4">
+            <span className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white">
+              {text}
+            </span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#E9E778]" />
+          </div>
+        ))}
       </div>
 
-      {/* Bottom Reverse Outlined Marquee */}
-      <div className="flex whitespace-nowrap overflow-hidden mt-4">
-        <div className="flex gap-8 items-center animate-marquee-reverse">
-          {textItems.concat(textItems).map((text, idx) => (
-            <div key={idx} className="flex items-center gap-8">
-              <span
-                className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-transparent"
-                style={{
-                  WebkitTextStroke: "1.5px rgba(255, 255, 255, 0.4)",
-                }}
-              >
-                {text}
-              </span>
-              <span className="w-3 h-3 rounded-full border border-white/40" />
-            </div>
-          ))}
-        </div>
+      {/* Track 2 (Rightward with outlined typography) */}
+      <div className="flex animate-floema-marquee-reverse whitespace-nowrap">
+        {Array.from({ length: 4 }).flatMap(() => items).map((text, i) => (
+          <div key={i} className="flex items-center gap-6 mx-4">
+            <span
+              className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-transparent"
+              style={{ WebkitTextStroke: "1px #E9E778" }}
+            >
+              {text}
+            </span>
+            <span className="w-2 h-2 rounded-full border border-white/40" />
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

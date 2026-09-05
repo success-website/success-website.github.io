@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Search, X, ArrowRight, ShieldCheck, Wrench, Building2, MapPin } from "lucide-react";
+import { Search, X, ArrowUpRight, Wrench, Building2, MapPin } from "lucide-react";
 import { SERVICES_DATA, CLIENTS_DATA, COMPANY_INFO } from "@/data/websiteData";
 
 interface SearchModalProps {
@@ -55,168 +55,110 @@ export default function SearchModal({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/65 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-[#241F21]/80 backdrop-blur-md animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-zinc-100 overflow-hidden text-zinc-900 animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#241F21]/10 overflow-hidden text-[#241F21] animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Search header with Kortrijk style title */}
-        <div className="p-6 border-b border-zinc-100 flex items-center justify-between">
+        {/* Header */}
+        <div className="p-6 border-b border-[#241F21]/10 flex items-center justify-between">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#D2251F]">
-              Search Entire Website
+            <span className="floema-pill floema-pill-fluor text-xs mb-1">
+              Search Index
             </span>
-            <h3 className="text-xl font-black tracking-tight text-zinc-900 mt-0.5">
-              What engineering solution are you seeking?
+            <h3 className="text-xl font-bold tracking-tight uppercase text-[#241F21]">
+              What capability are you seeking?
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-zinc-100 text-zinc-400 hover:text-zinc-700 transition-colors"
+            className="p-2 rounded-full hover:bg-[#F2EFEA] text-[#7A716D] hover:text-[#241F21] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Input box */}
-        <div className="px-6 py-4 bg-zinc-50 border-b border-zinc-100 flex items-center gap-3">
-          <Search className="w-5 h-5 text-zinc-400" />
+        {/* Input */}
+        <div className="px-6 py-4 bg-[#F2EFEA] border-b border-[#241F21]/10 flex items-center gap-3">
+          <Search className="w-5 h-5 text-[#7A716D]" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search fabrication, metal stamping, dies, ISO 9001, clients..."
-            className="w-full bg-transparent border-none outline-none text-base sm:text-lg text-zinc-900 placeholder:text-zinc-400 font-medium"
+            placeholder="Search stamping, progressive dies, ISO 9001, clients..."
+            className="w-full bg-transparent border-none outline-none text-base sm:text-lg text-[#241F21] placeholder:text-[#988F8B] font-medium"
           />
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="text-xs text-zinc-400 hover:text-zinc-600 font-medium"
+              className="text-xs font-mono text-[#7A716D] hover:text-[#241F21]"
             >
               Clear
             </button>
           )}
         </div>
 
-        {/* Quick suggestions if empty */}
-        {!query && (
-          <div className="p-6">
-            <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">
-              Popular Manufacturing Searches
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Precision Stamping",
-                "ISO 9001:2015",
-                "Progressive Tooling",
-                "Stainless Steel SS304",
-                "Heavy Fabrication",
-                "Automotive Brackets",
-                "SIDCO Kakkalur",
-              ].map((term) => (
-                <button
-                  key={term}
-                  onClick={() => setQuery(term)}
-                  className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-zinc-100 hover:bg-[#D2251F] hover:text-white transition-all text-zinc-700"
+        {/* Results */}
+        <div className="p-6 max-h-[60vh] overflow-y-auto space-y-6">
+          {/* Services */}
+          <div>
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#988F8B] mb-3">
+              Production Bays & Capabilities ({filteredServices.length})
+            </h4>
+            <div className="space-y-2">
+              {filteredServices.map((s) => (
+                <div
+                  key={s.id}
+                  onClick={() => {
+                    onSelectService(s.id);
+                    onClose();
+                  }}
+                  className="p-3.5 rounded-2xl hover:bg-[#F2EFEA] border border-transparent hover:border-[#241F21]/10 cursor-pointer transition-all flex items-center justify-between group"
                 >
-                  {term}
-                </button>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#E9E778] text-[#241F21] flex items-center justify-center font-mono text-xs font-bold flex-shrink-0">
+                      {s.number}
+                    </div>
+                    <div>
+                      <div className="font-bold text-sm uppercase text-[#241F21] group-hover:text-[#241F21]">
+                        {s.title}
+                      </div>
+                      <div className="text-xs text-[#7A716D]">{s.hallOrBay}</div>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-[#7A716D] group-hover:text-[#241F21] transition-transform group-hover:scale-110" />
+                </div>
               ))}
             </div>
           </div>
-        )}
 
-        {/* Search Results */}
-        {query && (
-          <div className="p-6 max-h-96 overflow-y-auto space-y-6">
-            {/* Capabilities Matches */}
-            {filteredServices.length > 0 && (
-              <div>
-                <div className="text-xs font-bold text-[#D2251F] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <Wrench className="w-3.5 h-3.5" />
-                  <span>Capabilities & Bays ({filteredServices.length})</span>
-                </div>
-                <div className="space-y-2">
-                  {filteredServices.map((srv) => (
-                    <button
-                      key={srv.id}
-                      onClick={() => {
-                        onSelectService(srv.id);
-                        onClose();
-                      }}
-                      className="w-full text-left p-3 rounded-2xl hover:bg-zinc-50 border border-transparent hover:border-zinc-200 transition-all flex items-center justify-between group"
-                    >
-                      <div>
-                        <div className="font-bold text-sm text-zinc-900 group-hover:text-[#D2251F] transition-colors">
-                          {srv.title}
-                        </div>
-                        <div className="text-xs text-zinc-500 mt-0.5 line-clamp-1">
-                          {srv.shortDesc}
-                        </div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-zinc-300 group-hover:text-[#D2251F] group-hover:translate-x-1 transition-all" />
-                    </button>
-                  ))}
-                </div>
+          {/* OEM Clients */}
+          {filteredClients.length > 0 && (
+            <div className="pt-4 border-t border-[#241F21]/10">
+              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#988F8B] mb-3">
+                OEM Partner Ecosystem ({filteredClients.length})
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {filteredClients.map((c, i) => (
+                  <div
+                    key={i}
+                    className="p-3 rounded-2xl bg-[#F2EFEA]/60 border border-[#241F21]/8 flex items-center justify-between"
+                  >
+                    <div>
+                      <div className="font-bold text-sm uppercase text-[#241F21]">{c.name}</div>
+                      <div className="text-[11px] text-[#7A716D]">{c.category}</div>
+                    </div>
+                    <span className="floema-pill floema-pill-fluor text-[9px]">
+                      OEM
+                    </span>
+                  </div>
+                ))}
               </div>
-            )}
-
-            {/* Clients Matches */}
-            {filteredClients.length > 0 && (
-              <div>
-                <div className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <Building2 className="w-3.5 h-3.5" />
-                  <span>Client Partners ({filteredClients.length})</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {filteredClients.map((client) => (
-                    <a
-                      key={client.name}
-                      href="#clients"
-                      onClick={onClose}
-                      className="p-3 rounded-xl bg-zinc-50 hover:bg-zinc-100 transition-colors flex items-center gap-3"
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-white p-1 flex items-center justify-center shadow-xs">
-                        <img
-                          src={client.logo}
-                          alt={client.name}
-                          className="max-h-full max-w-full object-contain"
-                        />
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-zinc-900">
-                          {client.name}
-                        </div>
-                        <div className="text-[11px] text-zinc-500">
-                          {client.category}
-                        </div>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {filteredServices.length === 0 && filteredClients.length === 0 && (
-              <div className="text-center py-8 text-zinc-500">
-                <p className="font-medium text-sm">
-                  No matching services or documents found for &quot;{query}&quot;.
-                </p>
-                <p className="text-xs text-zinc-400 mt-1">
-                  Contact our engineering team directly at {COMPANY_INFO.phoneDisplay}
-                </p>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Footer info in search */}
-        <div className="px-6 py-3.5 bg-zinc-50 border-t border-zinc-100 text-xs text-zinc-500 flex justify-between items-center">
-          <span>Success Engineering Enterprises • SIDCO Kakkalur</span>
-          <span className="font-semibold text-[#D2251F]">Press ESC to close</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

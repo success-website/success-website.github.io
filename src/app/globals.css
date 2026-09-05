@@ -1,126 +1,198 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-urbanist: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --color-primary: #D2251F;
-  --color-primary-hover: #B31C17;
-  --color-secondary: #FF604B;
-  --color-dark: #0F172A;
+  /* Floema Architectural Palette (Bürocratik Style) */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-ivory: #F2EFEA;
+  --color-ivory-light: #F9F8F6;
+  --color-ivory-dark: #EBE7DF;
+  --color-ivory-subtle: #E4DED3;
+  --color-stone: #241F21;
+  --color-stone-muted: #7A716D;
+  --color-stone-light: #988F8B;
+  --color-stone-border: rgba(36, 31, 33, 0.12);
+  --color-fluor: #E9E778;
+  --color-fluor-hover: #D8D663;
+  --color-coral: #F76C46;
+  --color-red: #FF004D;
+  --color-forest: #042D2B;
+  
+  --ease-floema: cubic-bezier(0.19, 1, 0.22, 1);
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
-  font-family: var(--font-urbanist);
-  color: #18181B;
-  background-color: #FFFFFF;
+  scroll-padding-top: 100px;
+  font-family: var(--font-main);
+  color: var(--color-stone);
+  background-color: var(--color-ivory);
 }
 
 body {
   overflow-x: hidden;
-  font-family: var(--font-urbanist);
+  font-family: var(--font-main);
+  background-color: var(--color-ivory);
+  color: var(--color-stone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar */
+/* Custom Floema Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: var(--color-ivory);
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 4px;
+  background: var(--color-stone-light);
+  border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: var(--color-stone);
 }
 
-/* Kortrijk Xpo signature button classes */
-.c-btn {
+::selection {
+  background: var(--color-stone);
+  color: var(--color-fluor);
+}
+
+/* Floema Button System */
+.floema-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
   font-weight: 600;
   border-radius: 9999px;
-  padding: 0.85rem 2rem;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0.85rem 1.85rem;
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  transition: transform 0.5s var(--ease-floema), background-color 0.5s var(--ease-floema), border-color 0.5s var(--ease-floema), color 0.5s var(--ease-floema), box-shadow 0.5s var(--ease-floema);
+  position: relative;
   cursor: pointer;
+  white-space: nowrap;
 }
 
-.c-btn--primary {
-  background-color: #D2251F;
-  color: #FFFFFF;
-  border: 1.5px solid #D2251F;
+.floema-btn:hover {
+  transform: scale(1.03);
 }
 
-.c-btn--primary:hover {
-  background-color: #B31C17;
-  border-color: #B31C17;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(210, 37, 31, 0.35);
+.floema-btn-dark {
+  background-color: var(--color-stone);
+  color: var(--color-ivory-light);
+  border: 1px solid var(--color-stone);
+}
+.floema-btn-dark:hover {
+  background-color: #171315;
+  box-shadow: 0 12px 30px rgba(36, 31, 33, 0.2);
 }
 
-.c-btn--secondary {
+.floema-btn-fluor {
+  background-color: var(--color-fluor);
+  color: var(--color-stone);
+  border: 1px solid var(--color-fluor);
+}
+.floema-btn-fluor:hover {
+  background-color: var(--color-fluor-hover);
+  box-shadow: 0 12px 30px rgba(233, 231, 120, 0.35);
+}
+
+.floema-btn-outline {
   background-color: transparent;
-  color: #18181B;
-  border: 1.5px solid #18181B;
+  color: var(--color-stone);
+  border: 1px solid var(--color-stone-border);
+  backdrop-filter: blur(8px);
+}
+.floema-btn-outline:hover {
+  border-color: var(--color-stone);
+  background-color: rgba(36, 31, 33, 0.04);
 }
 
-.c-btn--secondary:hover {
-  background-color: #18181B;
-  color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+.floema-btn-white {
+  background-color: #ffffff;
+  color: var(--color-stone);
+  border: 1px solid rgba(36, 31, 33, 0.08);
+}
+.floema-btn-white:hover {
+  background-color: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-.c-btn--white {
-  background-color: #FFFFFF;
-  color: #D2251F;
-  border: 1.5px solid #FFFFFF;
+/* Floema Badges / Pill Tags */
+.floema-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
 }
 
-.c-btn--white:hover {
-  background-color: #FFF1F0;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+.floema-pill-fluor {
+  background-color: var(--color-fluor);
+  color: var(--color-stone);
 }
 
-.c-btn--outline-white {
-  background-color: transparent;
-  color: #FFFFFF;
-  border: 1.5px solid #FFFFFF;
+.floema-pill-stone {
+  background-color: rgba(36, 31, 33, 0.08);
+  color: var(--color-stone);
 }
 
-.c-btn--outline-white:hover {
-  background-color: #FFFFFF;
-  color: #D2251F;
-  transform: translateY(-2px);
+.floema-pill-dark {
+  background-color: var(--color-stone);
+  color: var(--color-fluor);
 }
 
-/* Wiggle animation */
-@keyframes wiggle {
-  0%, 100% { transform: rotate(-5deg) scale(1); }
-  50% { transform: rotate(5deg) scale(1.05); }
+/* Floema Architectural Card */
+.floema-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-stone-border);
+  border-radius: 28px;
+  transition: transform 0.6s var(--ease-floema), box-shadow 0.6s var(--ease-floema), border-color 0.6s var(--ease-floema);
+}
+.floema-card:hover {
+  border-color: rgba(36, 31, 33, 0.3);
+  box-shadow: 0 24px 48px -12px rgba(36, 31, 33, 0.08);
 }
 
-.animate-wiggle {
-  animation: wiggle 2.5s ease-in-out infinite;
+/* Floema Marquee Animation */
+@keyframes floemaMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* Diagonal chevron / cut clip-paths */
-.clip-diagonal {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+@keyframes floemaMarqueeReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
-.clip-chevron-right {
-  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+.animate-floema-marquee {
+  display: flex;
+  width: max-content;
+  animation: floemaMarquee 26s linear infinite;
+}
+
+.animate-floema-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: floemaMarqueeReverse 26s linear infinite;
+}
+
+.animate-floema-marquee:hover,
+.animate-floema-marquee-reverse:hover {
+  animation-play-state: paused;
 }

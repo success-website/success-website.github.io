@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle2, Factory, Cpu, Award, ArrowUpRight } from "lucide-react";
+import { CheckCircle2, Factory, Cpu, Award, ArrowUpRight, MapPin } from "lucide-react";
 import { COMPANY_INFO } from "@/data/websiteData";
 import { getAssetPath } from "@/lib/basePath";
 
@@ -14,81 +14,98 @@ interface AboutSectionProps {
 export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
   const highlights = [
     {
-      title: "Single-Source Capabilities",
-      desc: "From rapid prototyping and 3D CAD design to die making, high-tonnage stamping, and final assembly.",
+      title: "Single-Source Engineering Ecosystem",
+      desc: "From rapid prototyping and 3D CAD modeling to die making, high-tonnage stamping, and cleanroom assembly under one roof.",
       icon: Factory,
     },
     {
       title: "20+ Years of Manufacturing Integrity",
-      desc: "Founded in 2004, serving major multinational OEMs across automotive, construction, and power sectors.",
+      desc: "Founded in 2004, serving premier multinational OEMs across automotive, heavy machinery, power, and construction sectors.",
       icon: Award,
     },
     {
-      title: "Zero-Defect Tolerances",
-      desc: "Statistical Process Control (SPC), calibrated CMM inspections, and full material lot traceability.",
-      icon: Cpu,
-    },
-    {
-      title: "On-Time Global Delivery",
-      desc: "Strategic logistics hub at SIDCO Kakkalur with seamless connectivity to Chennai seaports and highways.",
-      icon: CheckCircle2,
+      title: "Strategic Industrial Corridor Location",
+      desc: "Situated inside SIDCO Industrial Estate, Kakkalur, just 30 minutes from Chennai bypass and export logistical gateways.",
+      icon: MapPin,
     },
   ];
 
   return (
-    <section id="aboutus" className="py-24 lg:py-32 bg-white text-zinc-900 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Section Index Marker (Kortrijk Xpo style) */}
-        <div className="flex items-center gap-3 mb-6">
-          <span className="text-xs font-black tracking-widest text-[#D2251F] uppercase">
-            01 / COMPANY PROFILE
-          </span>
-          <div className="h-px bg-zinc-200 flex-1 max-w-[120px]" />
+    <section id="about" className="py-24 sm:py-32 bg-[#F9F8F6] text-[#241F21] relative overflow-hidden border-t border-[#241F21]/8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="floema-pill floema-pill-stone">
+              01 • Company Profile
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#241F21] leading-tight">
+            Engineering Excellence Built on Two Decades of Precision.
+          </h2>
+          <p className="mt-5 text-base sm:text-lg text-[#7A716D] font-normal leading-relaxed">
+            Headquartered in the SIDCO Industrial Estate, Kakkalur, Success Engineering Enterprises is an ISO 9001:2015 certified manufacturer specializing in precision press tools, high-tonnage sheet metal components, and turnkey welded sub-assemblies.
+          </p>
         </div>
 
-        {/* Section Title & Tagline */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div className="lg:col-span-7">
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase leading-[1.08] text-zinc-900">
-              Let us be an extension of your{" "}
-              <span className="text-[#D2251F] underline decoration-4 underline-offset-8">
-                success
-              </span>
-            </h2>
-
-            <div className="mt-8 space-y-5 text-base sm:text-lg text-zinc-600 leading-relaxed font-normal">
-              <p>
-                <strong>Success Engineering Enterprises</strong> is a uniquely structured manufacturing enterprise providing precision press tools, high-tonnage metal stamping, and specialized welding fabrication solutions to global customers across heavy industries.
-              </p>
-              <p>
-                As an accredited tier-1 production metal fabrication company, we empower our clients to optimize their bottom lines by delivering innovative processes, dedicated engineering support, and comprehensive single-source manufacturing capabilities under one roof.
-              </p>
-              <p>
-                With over two decades of accumulated metallurgical experience, cutting-edge machinery, and a rigorously trained technical team, we take on challenging projects from the initial prototype phase right through to full container-load production with absolute on-time precision.
-              </p>
+        {/* 2-Column Split: Story & Facility Media */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: Feature Highlights */}
+          <div className="lg:col-span-6 space-y-8">
+            <div className="space-y-6">
+              {highlights.map((item, idx) => {
+                const IconComponent = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-6 rounded-2xl bg-white border border-[#241F21]/8 hover:border-[#241F21]/30 transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-[#E9E778] text-[#241F21] flex items-center justify-center flex-shrink-0">
+                        <IconComponent className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-base font-bold uppercase tracking-tight text-[#241F21]">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1.5 text-sm text-[#7A716D] leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="pt-4 flex items-center gap-4">
               <button
                 onClick={onOpenQuote}
-                className="c-btn c-btn--primary"
+                data-cursor="AUDIT"
+                className="floema-btn floema-btn-dark text-xs py-3 px-6 shadow-md"
               >
-                <span>Partner With Us</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <span>Schedule a Plant Audit</span>
+                <ArrowUpRight className="w-4 h-4 text-[#E9E778]" />
               </button>
+
               <a
-                href="#quality"
-                className="c-btn c-btn--secondary"
+                href={COMPANY_INFO.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="floema-btn floema-btn-outline text-xs py-3 px-5"
               >
-                <span>View Quality Audits</span>
+                <span>Open Google Maps</span>
               </a>
             </div>
           </div>
 
-          {/* Right Column: Key Stats & Photo */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-zinc-100 group">
-              <div className="aspect-[4/3] relative w-full">
+          {/* Right Column: Key Photo */}
+          <div className="lg:col-span-6">
+            <div
+              data-cursor="FACILITY"
+              className="floema-card overflow-hidden group relative p-3 bg-white"
+            >
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden w-full bg-[#EBE7DF]">
                 <Image
                   src={getAssetPath("/images/Homepage_img.jpg")}
                   alt="Success Engineering Tooling Bay"
@@ -96,59 +113,19 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6">
-                <div className="text-white">
-                  <div className="text-xs font-bold uppercase tracking-widest text-[#FF604B]">
-                    Industrial Facility
-                  </div>
-                  <div className="text-xl font-black uppercase mt-1">
-                    SIDCO Industrial Estate, Kakkalur
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Metrics Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {COMPANY_INFO.stats.map((st, idx) => (
-                <div
-                  key={idx}
-                  className="p-5 rounded-2xl bg-zinc-50 border border-zinc-100 hover:border-[#D2251F]/30 hover:shadow-md transition-all"
-                >
-                  <div className="text-2xl sm:text-3xl font-black text-[#D2251F] tracking-tight">
-                    {st.value}
-                  </div>
-                  <div className="text-xs sm:text-sm font-semibold text-zinc-600 mt-1 uppercase tracking-wide">
-                    {st.label}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <span className="floema-pill floema-pill-fluor text-[10px] mb-2">
+                      SIDCO Kakkalur Facility
+                    </span>
+                    <h4 className="text-lg font-bold uppercase tracking-tight">
+                      Active Production & Stamping Bays
+                    </h4>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* 4 Feature Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 pt-16 border-t border-zinc-100">
-          {highlights.map((h, i) => {
-            const Icon = h.icon;
-            return (
-              <div
-                key={i}
-                className="p-6 rounded-2xl bg-zinc-50 hover:bg-[#FFF5F5] border border-zinc-100 hover:border-[#D2251F]/30 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-white shadow-xs flex items-center justify-center text-[#D2251F] group-hover:bg-[#D2251F] group-hover:text-white transition-all">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h4 className="text-base font-bold text-zinc-900 mt-4 uppercase tracking-tight">
-                  {h.title}
-                </h4>
-                <p className="text-sm text-zinc-600 mt-2 leading-relaxed font-normal">
-                  {h.desc}
-                </p>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>

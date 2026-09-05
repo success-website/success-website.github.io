@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Send, CheckCircle2, Upload, Sparkles, Building, Phone, Mail, User } from "lucide-react";
+import { X, ArrowUpRight, CheckCircle2, Building, Phone, Mail, User } from "lucide-react";
 import { SERVICES_DATA, COMPANY_INFO } from "@/data/websiteData";
 
 interface QuoteModalProps {
@@ -46,16 +46,16 @@ export default function QuoteModal({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#241F21]/80 backdrop-blur-md animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-zinc-100 p-6 sm:p-10 text-zinc-900 animate-in zoom-in-95 duration-200 max-h-[95vh] overflow-y-auto"
+        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-[#241F21]/10 p-6 sm:p-10 text-[#241F21] animate-in zoom-in-95 duration-200 max-h-[95vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-full hover:bg-zinc-100 text-zinc-400 hover:text-zinc-700 transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-full hover:bg-[#F2EFEA] text-[#7A716D] hover:text-[#241F21] transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
@@ -63,13 +63,13 @@ export default function QuoteModal({
         {!isSubmitted ? (
           <div>
             <div className="mb-6">
-              <span className="text-xs font-black tracking-widest text-[#D2251F] uppercase">
+              <span className="floema-pill floema-pill-fluor text-xs mb-2">
                 RFQs & Engineering Quotes
               </span>
-              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-zinc-900 mt-1">
+              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#241F21] mt-2">
                 Request a Custom Quote
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-500 mt-1">
+              <p className="text-xs sm:text-sm text-[#7A716D] mt-1">
                 Receive comprehensive pricing, tooling lead times, and DFM recommendations within 24 hours.
               </p>
             </div>
@@ -77,13 +77,13 @@ export default function QuoteModal({
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Service Selection */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-600 mb-1">
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7A716D] mb-1.5">
                   Primary Capability Required
                 </label>
                 <select
                   value={service}
                   onChange={(e) => setService(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-zinc-50 border border-zinc-200 text-sm font-semibold text-zinc-900 focus:border-[#D2251F] focus:outline-none"
+                  className="w-full px-4 py-3 rounded-2xl bg-[#F2EFEA] border border-[#241F21]/10 text-sm font-semibold text-[#241F21] focus:border-[#241F21] focus:outline-none"
                 >
                   {SERVICES_DATA.map((s) => (
                     <option key={s.id} value={s.title}>
@@ -97,138 +97,122 @@ export default function QuoteModal({
               {/* Name & Company */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-600 mb-1">
-                    Contact Name *
+                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7A716D] mb-1.5">
+                    Your Name *
                   </label>
-                  <div className="relative">
-                    <User className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" />
-                    <input
-                      required
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Rajesh Kumar"
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-sm text-zinc-900 focus:border-[#D2251F] focus:outline-none"
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="e.g. John Doe"
+                    className="w-full px-4 py-3 rounded-2xl bg-[#F2EFEA] border border-[#241F21]/10 text-sm text-[#241F21] focus:border-[#241F21] focus:outline-none"
+                  />
                 </div>
-
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-600 mb-1">
-                    Company / Organization
+                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7A716D] mb-1.5">
+                    Company Name *
                   </label>
-                  <div className="relative">
-                    <Building className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" />
-                    <input
-                      type="text"
-                      value={company}
-                      onChange={(e) => setCompany(e.target.value)}
-                      placeholder="e.g. Automotive OEM"
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-sm text-zinc-900 focus:border-[#D2251F] focus:outline-none"
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    placeholder="e.g. Tier-1 Automotive OEM"
+                    className="w-full px-4 py-3 rounded-2xl bg-[#F2EFEA] border border-[#241F21]/10 text-sm text-[#241F21] focus:border-[#241F21] focus:outline-none"
+                  />
                 </div>
               </div>
 
               {/* Email & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-600 mb-1">
+                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7A716D] mb-1.5">
                     Business Email *
                   </label>
-                  <div className="relative">
-                    <Mail className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" />
-                    <input
-                      required
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="procurement@company.com"
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-sm text-zinc-900 focus:border-[#D2251F] focus:outline-none"
-                    />
-                  </div>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="john@company.com"
+                    className="w-full px-4 py-3 rounded-2xl bg-[#F2EFEA] border border-[#241F21]/10 text-sm text-[#241F21] focus:border-[#241F21] focus:outline-none"
+                  />
                 </div>
-
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-600 mb-1">
-                    Mobile / WhatsApp *
+                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7A716D] mb-1.5">
+                    Phone / WhatsApp *
                   </label>
-                  <div className="relative">
-                    <Phone className="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" />
-                    <input
-                      required
-                      type="tel"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+91 98765 43210"
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-sm text-zinc-900 focus:border-[#D2251F] focus:outline-none"
-                    />
-                  </div>
+                  <input
+                    type="tel"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+91 98765 43210"
+                    className="w-full px-4 py-3 rounded-2xl bg-[#F2EFEA] border border-[#241F21]/10 text-sm text-[#241F21] focus:border-[#241F21] focus:outline-none"
+                  />
                 </div>
               </div>
 
-              {/* Estimated Batch Size */}
+              {/* Quantity */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-600 mb-1">
-                  Estimated Quantity / Annual Run
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7A716D] mb-1.5">
+                  Estimated Batch Volume
                 </label>
-                <div className="grid grid-cols-3 gap-2 text-xs font-semibold text-zinc-700">
-                  {["Prototypes (< 50)", "Batch (500 - 5k)", "High Volume (10k+)"].map((q) => (
-                    <button
-                      type="button"
-                      key={q}
-                      onClick={() => setQuantity(q)}
-                      className={`p-2 rounded-xl border text-center transition-all ${
-                        quantity === q
-                          ? "bg-[#D2251F] text-white border-[#D2251F]"
-                          : "bg-zinc-50 border-zinc-200 hover:bg-zinc-100"
-                      }`}
-                    >
-                      {q}
-                    </button>
-                  ))}
-                </div>
+                <select
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                  className="w-full px-4 py-3 rounded-2xl bg-[#F2EFEA] border border-[#241F21]/10 text-sm font-semibold text-[#241F21] focus:border-[#241F21] focus:outline-none"
+                >
+                  <option value="Prototype / Sample Testing (1 - 50 pcs)">Prototype / Sample Testing (1 - 50 pcs)</option>
+                  <option value="Pilot Batch (50 - 500 pcs)">Pilot Batch (50 - 500 pcs)</option>
+                  <option value="Production (1,000+ units)">Production (1,000+ units)</option>
+                  <option value="Mass Recurring (10,000+ units/month)">Mass Recurring (10,000+ units/month)</option>
+                </select>
               </div>
 
-              {/* Message / Specs */}
+              {/* Project Details */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-600 mb-1">
-                  Part Details, Tolerances, or Material Grades
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7A716D] mb-1.5">
+                  Part Drawings, Materials & Tolerances
                 </label>
                 <textarea
                   rows={3}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Mention metal grades (e.g. SS304, CRCA, IS 2062), thickness, critical dimensions..."
-                  className="w-full p-3 rounded-xl bg-zinc-50 border border-zinc-200 text-sm text-zinc-900 focus:border-[#D2251F] focus:outline-none"
+                  placeholder="Share details on sheet thickness, material grade (CRCA/SS304), stamping tonnage, or delivery timelines..."
+                  className="w-full px-4 py-3 rounded-2xl bg-[#F2EFEA] border border-[#241F21]/10 text-sm text-[#241F21] focus:border-[#241F21] focus:outline-none resize-none"
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full c-btn c-btn--primary font-bold uppercase tracking-wider text-sm shadow-xl mt-4"
-              >
-                <Send className="w-4 h-4" />
-                <span>Submit RFQ to Engineering Team</span>
-              </button>
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  className="floema-btn floema-btn-fluor w-full py-3.5 text-sm justify-center shadow-lg"
+                >
+                  <span>Submit RFQ to Engineering Team</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </div>
             </form>
           </div>
         ) : (
-          <div className="text-center py-10 space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-10 h-10" />
+          <div className="py-12 text-center">
+            <div className="w-16 h-16 rounded-full bg-[#E9E778] text-[#241F21] flex items-center justify-center mx-auto mb-6 shadow-xl">
+              <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black uppercase text-zinc-900">
-              Request Received!
+            <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#241F21]">
+              Quotation Request Received!
             </h3>
-            <p className="text-sm text-zinc-600 max-w-md mx-auto leading-relaxed">
-              Thank you, <strong>{name || "Valued Partner"}</strong>. Your technical request for{" "}
-              <strong>{service}</strong> has been logged. Our chief estimator will reach out at{" "}
-              <strong>{phone || email}</strong> shortly.
+            <p className="mt-3 text-sm text-[#7A716D] max-w-md mx-auto leading-relaxed">
+              Thank you, <span className="font-bold text-[#241F21]">{name}</span> from <span className="font-bold text-[#241F21]">{company}</span>. Our tooling design engineers have received your inquiry and will respond within 24 hours.
             </p>
-            <div className="pt-4">
-              <button onClick={handleReset} className="c-btn c-btn--primary">
-                Done
+            <div className="mt-8">
+              <button
+                onClick={handleReset}
+                className="floema-btn floema-btn-dark text-xs py-3 px-8"
+              >
+                <span>Back to Website</span>
               </button>
             </div>
           </div>
