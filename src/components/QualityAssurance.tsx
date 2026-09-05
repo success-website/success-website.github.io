@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ShieldCheck, Award, FileCheck2, Download, Eye, X, CheckCircle2 } from "lucide-react";
+import { getAssetPath } from "@/lib/basePath";
 
 export default function QualityAssurance() {
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
@@ -51,7 +52,7 @@ export default function QualityAssurance() {
           <div className="lg:col-span-4 flex lg:justify-end">
             <div className="relative w-36 h-36 sm:w-44 sm:h-44 p-3 bg-zinc-50 rounded-3xl border border-zinc-200 flex items-center justify-center shadow-md">
               <Image
-                src="/images/ISO_LOGO.png"
+                src={getAssetPath("/images/ISO_LOGO.png")}
                 alt="ISO 9001:2015 Logo"
                 fill
                 className="object-contain p-4"
@@ -66,7 +67,7 @@ export default function QualityAssurance() {
           <div className="lg:col-span-6 relative rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 group">
             <div className="aspect-[4/3] relative w-full bg-zinc-100">
               <Image
-                src="/images/Metalplates.png"
+                src={getAssetPath("/images/Metalplates.png")}
                 alt="Calibrated Metal Plates Quality Inspection"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

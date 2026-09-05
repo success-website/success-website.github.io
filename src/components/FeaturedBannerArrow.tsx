@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { ArrowRight, MapPin, Calendar, CheckCircle2 } from "lucide-react";
 import { COMPANY_INFO } from "@/data/websiteData";
+import { getAssetPath } from "@/lib/basePath";
 
 interface FeaturedBannerArrowProps {
   onOpenQuote: () => void;
@@ -17,7 +18,7 @@ export default function FeaturedBannerArrow({ onOpenQuote }: FeaturedBannerArrow
           {/* Left Media (Photo of industrial metal stamping / fabrication) */}
           <div className="relative w-full lg:w-1/2 min-h-[340px] lg:min-h-[500px]">
             <Image
-              src="/images/Metalplates.png"
+              src={getAssetPath("/images/Metalplates.png")}
               alt="Success Engineering Precision Quality Metal Plates"
               fill
               className="object-cover"

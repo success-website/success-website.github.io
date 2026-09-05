@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircle2, Factory, Cpu, Award, ArrowUpRight } from "lucide-react";
 import { COMPANY_INFO } from "@/data/websiteData";
+import { getAssetPath } from "@/lib/basePath";
 
 interface AboutSectionProps {
   onOpenQuote: () => void;
@@ -89,7 +90,7 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-zinc-100 group">
               <div className="aspect-[4/3] relative w-full">
                 <Image
-                  src="/images/Homepage_img.jpg"
+                  src={getAssetPath("/images/Homepage_img.jpg")}
                   alt="Success Engineering Tooling Bay"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"

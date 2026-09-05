@@ -1,3 +1,5 @@
+import { getAssetPath } from "@/lib/basePath";
+
 export interface ServiceItem {
   id: string;
   number: string;
@@ -79,8 +81,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Non-destructive testing (NDT) ready"
     ],
     materials: ["Mild Steel (IS 2062)", "Stainless Steel (SS304, SS316)", "Aluminum Alloys", "Corten Steel"],
-    defaultImg: "/images/1.png",
-    hoverImg: "/images/1_hover.png",
+    defaultImg: getAssetPath("/images/1.png"),
+    hoverImg: getAssetPath("/images/1_hover.png"),
     hallOrBay: "Bay 1 • Fabrication",
     tag: "High Demand"
   },
@@ -98,8 +100,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Deburring, chamfering, and automated vibro-finishing"
     ],
     materials: ["Cold Rolled Steel (CRCA)", "Hot Rolled Steel (HR)", "Brass & Copper alloys", "Spring Steel"],
-    defaultImg: "/images/2.png",
-    hoverImg: "/images/2_hover.png",
+    defaultImg: getAssetPath("/images/2.png"),
+    hoverImg: getAssetPath("/images/2_hover.png"),
     hallOrBay: "Bay 2 • Stamping",
     tag: "Automotive OEM"
   },
@@ -117,8 +119,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Custom export packaging, crating & RFID tagging"
     ],
     materials: ["Multi-material mechanical assemblies", "Fastener integration", "Gaskets & Seals", "Powder-coated enclosures"],
-    defaultImg: "/images/3.png",
-    hoverImg: "/images/3_hover.png",
+    defaultImg: getAssetPath("/images/3.png"),
+    hoverImg: getAssetPath("/images/3_hover.png"),
     hallOrBay: "Bay 3 • Integration",
     tag: "Turnkey Ready"
   },
@@ -136,8 +138,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Reverse engineering & CMM dimensional verification"
     ],
     materials: ["3D Digital Twins", "Prototype tooling alloys", "Structural mockups"],
-    defaultImg: "/images/4.png",
-    hoverImg: "/images/4_hover.png",
+    defaultImg: getAssetPath("/images/4.png"),
+    hoverImg: getAssetPath("/images/4_hover.png"),
     hallOrBay: "Bay 4 • Tech Center",
     tag: "Innovation"
   },
@@ -155,8 +157,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Go / No-Go inspection gauges & coordinate checking fixtures"
     ],
     materials: ["Die Steels (D2, D3, HCHCR)", "High-Speed Steel (HSS)", "Carbide inserts", "Hard chrome plating"],
-    defaultImg: "/images/5.png",
-    hoverImg: "/images/5_hover.png",
+    defaultImg: getAssetPath("/images/5.png"),
+    hoverImg: getAssetPath("/images/5_hover.png"),
     hallOrBay: "Bay 5 • Toolroom",
     tag: "20+ Yrs Specialty"
   }
@@ -222,14 +224,14 @@ export const STACKING_CARDS: StackingCardItem[] = [
 ];
 
 export const CLIENTS_DATA: ClientItem[] = [
-  { name: "Godrej", category: "Appliances & Consumer Goods", logo: "/images/Godrej-Logo.png", relationship: "Precision Sheet Metal & Stamped Hardware" },
-  { name: "Johnson Lifts", category: "Vertical Transportation", logo: "/images/johnson_logo.jpeg", relationship: "Structural Elevator Brackets & Guides" },
-  { name: "Schwing Stetter", category: "Construction Machinery", logo: "/images/schwing_logo.png", relationship: "Heavy Fabricated Welded Chassis & Sub-assemblies" },
-  { name: "Rane TRW", category: "Automotive Safety Systems", logo: "/images/rane_trw_logo.jpeg", relationship: "Precision Stamped Safety Components" },
-  { name: "Lotte", category: "Industrial & Food Processing", logo: "/images/lotte_logo.png", relationship: "Stainless Steel Fabrication & Components" },
-  { name: "Cooper Standard", category: "Automotive Systems", logo: "/images/cooper_logo.png", relationship: "Tooling & Custom Stamped Brackets" },
-  { name: "Oilfield Instrumentation", category: "Energy & Petroleum", logo: "/images/oilfield_logo.png", relationship: "High-Tolerance Machined Parts" },
-  { name: "TL India", category: "Industrial Solutions", logo: "/images/tl_india_logo.png", relationship: "Fabricated Assemblies & Pressings" }
+  { name: "Godrej", category: "Appliances & Consumer Goods", logo: getAssetPath("/images/Godrej-Logo.png"), relationship: "Precision Sheet Metal & Stamped Hardware" },
+  { name: "Johnson Lifts", category: "Vertical Transportation", logo: getAssetPath("/images/johnson_logo.jpeg"), relationship: "Structural Elevator Brackets & Guides" },
+  { name: "Schwing Stetter", category: "Construction Machinery", logo: getAssetPath("/images/schwing_logo.png"), relationship: "Heavy Fabricated Welded Chassis & Sub-assemblies" },
+  { name: "Rane TRW", category: "Automotive Safety Systems", logo: getAssetPath("/images/rane_trw_logo.jpeg"), relationship: "Precision Stamped Safety Components" },
+  { name: "Lotte", category: "Industrial & Food Processing", logo: getAssetPath("/images/lotte_logo.png"), relationship: "Stainless Steel Fabrication & Components" },
+  { name: "Cooper Standard", category: "Automotive Systems", logo: getAssetPath("/images/cooper_logo.png"), relationship: "Tooling & Custom Stamped Brackets" },
+  { name: "Oilfield Instrumentation", category: "Energy & Petroleum", logo: getAssetPath("/images/oilfield_logo.png"), relationship: "High-Tolerance Machined Parts" },
+  { name: "TL India", category: "Industrial Solutions", logo: getAssetPath("/images/tl_india_logo.png"), relationship: "Fabricated Assemblies & Pressings" }
 ];
 
 export const NEWS_DATA: NewsItem[] = [
@@ -241,7 +243,7 @@ export const NEWS_DATA: NewsItem[] = [
     excerpt: "Commissioning of new automated hydraulic press lines boosts deep-draw stamping volume by 45% for automotive clients.",
     content: "To cater to burgeoning demand from automotive safety and chassis manufacturers, Success Engineering has commissioned its newest 250-ton hydraulic press system equipped with automated decoiler and programmable servo feeders.",
     readTime: "3 min read",
-    image: "/images/Metalplates.png"
+    image: getAssetPath("/images/Metalplates.png")
   },
   {
     id: "iso-recertification",
@@ -251,7 +253,7 @@ export const NEWS_DATA: NewsItem[] = [
     excerpt: "UCAS India Pvt. Ltd. completes annual surveillance audit, praising digital tracking and zero-defect calibration protocols.",
     content: "Following a comprehensive 4-day on-site inspection of our toolrooms, welding stations, and quality laboratories, UCAS India Pvt. Ltd. reaffirmed our ISO 9001:2015 certification with zero non-conformances.",
     readTime: "4 min read",
-    image: "/images/ISO_LOGO.png"
+    image: getAssetPath("/images/ISO_LOGO.png")
   },
   {
     id: "sustainable-manufacturing",
@@ -261,38 +263,38 @@ export const NEWS_DATA: NewsItem[] = [
     excerpt: "Our SIDCO Kakkalur facility achieves a 98.4% metal scrap recycling rate through closed-loop baling partnerships.",
     content: "As part of our commitment to sustainable industrial production, Success Engineering has implemented an automated scrap sorting and baling system that recycles all stamping off-cuts into virgin steel production mills.",
     readTime: "3 min read",
-    image: "/images/Homepage_img.jpg"
+    image: getAssetPath("/images/Homepage_img.jpg")
   }
 ];
 
 export const GALLERY_IMAGES = [
   {
-    src: "/images/Homepage_img.jpg",
+    src: getAssetPath("/images/Homepage_img.jpg"),
     title: "High-Precision Tooling & Production Bay",
     desc: "Active manufacturing cell featuring automated press lines and calibrated fixtures."
   },
   {
-    src: "/images/Metalplates.png",
+    src: getAssetPath("/images/Metalplates.png"),
     title: "Calibrated Sheet Metal Stamping & Finishing",
     desc: "Precision laser-cut and stamped structural plates awaiting surface treatment."
   },
   {
-    src: "/images/1.png",
+    src: getAssetPath("/images/1.png"),
     title: "Industrial Welding & Fabrication Bay",
     desc: "Heavy-duty MIG/TIG welding station with high-tensile joint verification."
   },
   {
-    src: "/images/2.png",
+    src: getAssetPath("/images/2.png"),
     title: "Precision Press Stamped Metal Parts",
     desc: "High-volume automotive brackets and structural components."
   },
   {
-    src: "/images/3.png",
+    src: getAssetPath("/images/3.png"),
     title: "Clean Mechanical Sub-Assembly Cells",
     desc: "Lean integration lines incorporating hardware insertion and testing."
   },
   {
-    src: "/images/5.png",
+    src: getAssetPath("/images/5.png"),
     title: "Tool & Die Engineering Toolroom",
     desc: "Hardened alloy progressive dies engineered for multi-million cycle runs."
   }

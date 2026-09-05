@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Search, ChevronDown, Phone, MapPin, Sparkles, Shield, ArrowUpRight } from "lucide-react";
 import { COMPANY_INFO, SERVICES_DATA } from "@/data/websiteData";
+import { getAssetPath } from "@/lib/basePath";
 
 interface NavbarProps {
   onOpenSearch: () => void;
@@ -74,7 +75,7 @@ export default function Navbar({
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden bg-white shadow-sm p-1 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
             <Image
-              src="/images/logo.png"
+              src={getAssetPath("/images/logo.png")}
               alt="Success Engineering Enterprises Logo"
               width={48}
               height={48}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getAssetPath } from "@/lib/basePath";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,14 +18,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Success Engineering Enterprises" }],
   icons: {
-    icon: "/images/logo.png",
-    apple: "/images/logo.png",
+    icon: getAssetPath("/images/logo.png"),
+    apple: getAssetPath("/images/logo.png"),
   },
   openGraph: {
     title: "Success Engineering Enterprises | Precision Manufacturing",
     description:
       "Press and precision manufacturing company for over 20 years. ISO 9001:2015 certified by UCAS India Pvt. Ltd.",
-    images: ["/images/Homepage_img.jpg"],
+    images: [getAssetPath("/images/Homepage_img.jpg")],
     type: "website",
   },
 };

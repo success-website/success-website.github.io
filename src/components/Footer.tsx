@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowRight, ShieldCheck, Check, Send } from "lucide-react";
 import { COMPANY_INFO, SERVICES_DATA } from "@/data/websiteData";
+import { getAssetPath } from "@/lib/basePath";
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -101,7 +102,7 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               <div className="relative w-14 h-14 rounded-2xl bg-white p-2 shadow-md flex items-center justify-center flex-shrink-0">
                 <Image
-                  src="/images/logo.png"
+                  src={getAssetPath("/images/logo.png")}
                   alt="Success Engineering Logo"
                   width={56}
                   height={56}
@@ -178,7 +179,7 @@ export default function Footer() {
             <div className="flex items-center gap-4 pt-4 border-t border-white/15">
               <div className="relative w-12 h-12 bg-white rounded-xl p-1.5 flex items-center justify-center flex-shrink-0">
                 <Image
-                  src="/images/ISO_LOGO.png"
+                  src={getAssetPath("/images/ISO_LOGO.png")}
                   alt="ISO"
                   width={40}
                   height={40}
