@@ -17,7 +17,6 @@ import ClientEcosystem from "@/components/ClientEcosystem";
 import NewsCaseStudies from "@/components/NewsCaseStudies";
 import Footer from "@/components/Footer";
 import FloemaCursor from "@/components/FloemaCursor";
-import FloemaLoader from "@/components/FloemaLoader";
 import SmoothScroll from "@/components/SmoothScroll";
 import KineticScrollText from "@/components/KineticScrollText";
 import SideScrollNav from "@/components/SideScrollNav";
@@ -43,9 +42,6 @@ export default function HomePage() {
   return (
     <SmoothScroll>
       <div className="min-h-screen flex flex-col bg-[#020A19] text-[#D5E0FF] selection:bg-[#7099FF] selection:text-[#020A19] relative">
-        {/* Hubtown Geometric Matrix Loader */}
-        <FloemaLoader />
-
         {/* Hubtown Luminescent Follower Cursor (Mouse devices) */}
         <FloemaCursor />
 
