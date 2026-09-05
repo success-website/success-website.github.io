@@ -15,15 +15,15 @@ export default function BrandingMarquee() {
   ];
 
   return (
-    <div className="py-12 bg-[#241F21] text-[#F2EFEA] overflow-hidden select-none border-y border-white/10">
+    <div className="py-12 bg-[#010712] text-[#D5E0FF] overflow-hidden select-none border-y border-[#D5E0FF]/15">
       {/* Track 1 (Leftward) */}
       <div className="flex animate-floema-marquee mb-4 whitespace-nowrap">
         {Array.from({ length: 4 }).flatMap(() => items).map((text, i) => (
           <div key={i} className="flex items-center gap-6 mx-4">
-            <span className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white">
+            <span className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#D5E0FF]">
               {text}
             </span>
-            <span className="w-2.5 h-2.5 rounded-full bg-[#E9E778]" />
+            <span className="w-2 h-2 rounded-full bg-[#7099FF] shadow-[0_0_8px_#7099FF]" />
           </div>
         ))}
       </div>
@@ -34,11 +34,11 @@ export default function BrandingMarquee() {
           <div key={i} className="flex items-center gap-6 mx-4">
             <span
               className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-transparent"
-              style={{ WebkitTextStroke: "1px #E9E778" }}
+              style={{ WebkitTextStroke: "1px rgba(112, 153, 255, 0.45)" }}
             >
               {text}
             </span>
-            <span className="w-2 h-2 rounded-full border border-white/40" />
+            <span className="w-2 h-2 rounded-full border border-[#7099FF]/40" />
           </div>
         ))}
       </div>

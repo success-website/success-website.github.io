@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Phone, Mail, ArrowUpRight, ShieldCheck, Check } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowUpRight, Check } from "lucide-react";
 import { COMPANY_INFO } from "@/data/websiteData";
 import { getAssetPath } from "@/lib/basePath";
 
@@ -20,43 +20,43 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-[#241F21] text-[#F2EFEA] pt-24 pb-12 relative overflow-hidden select-none">
+    <footer id="contact" className="bg-[#010712] text-[#D5E0FF] pt-24 pb-12 relative overflow-hidden select-none border-t border-[#D5E0FF]/15">
       {/* Subtle Background Architectural Brand Mark */}
-      <div className="absolute -bottom-10 right-0 pointer-events-none opacity-5 font-black text-9xl tracking-tighter text-white">
+      <div className="absolute -bottom-10 right-0 pointer-events-none opacity-5 font-black text-9xl tracking-tighter text-[#D5E0FF]">
         SUCCESS
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-[#D5E0FF]/15">
           {/* Left Column: Brand & Newsletter */}
           <div className="lg:col-span-6 space-y-8">
             <div>
-              <span className="floema-pill floema-pill-fluor text-xs mb-3">
-                Stay Connected
+              <span className="hubtown-tag text-xs mb-3">
+                [ STAY CONNECTED ]
               </span>
-              <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mt-2">
+              <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#D5E0FF] mt-2">
                 Subscribe to Manufacturing Bulletins.
               </h3>
-              <p className="text-sm text-[#D2CDC4] mt-2 max-w-md leading-relaxed">
+              <p className="text-sm text-[#D5E0FF]/70 mt-2 max-w-md leading-relaxed">
                 Receive quarterly metallurgical whitepapers, tooling optimization guides, and machinery expansion notices directly in your inbox.
               </p>
             </div>
 
             {/* Newsletter Input */}
             <form onSubmit={handleSubscribe} className="max-w-md">
-              <div className="flex items-center rounded-full bg-white/10 p-1.5 border border-white/15 focus-within:border-[#E9E778] transition-colors">
+              <div className="flex items-center rounded-full bg-[#040E24] p-1.5 border border-[#D5E0FF]/20 focus-within:border-[#7099FF] transition-colors">
                 <input
                   type="email"
                   required
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Enter your business email"
-                  className="w-full bg-transparent px-4 py-2 text-sm text-white placeholder:text-[#988F8B] outline-none font-medium"
+                  className="w-full bg-transparent px-4 py-2 text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/40 outline-none font-medium"
                 />
                 <button
                   type="submit"
-                  className="floema-btn floema-btn-fluor text-xs py-2 px-5 group flex-shrink-0"
+                  className="hubtown-btn-solid text-xs py-2 px-5 flex-shrink-0"
                 >
                   {subscribed ? (
                     <>
@@ -75,26 +75,26 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div>
-              <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#988F8B] mb-4">
+              <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#7099FF] mb-4">
                 Directory
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-mono uppercase tracking-wider text-[#D2CDC4]">
-                <Link href="#home" className="hover:text-[#E9E778] transition-colors">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-mono uppercase tracking-wider text-[#D5E0FF]/70">
+                <Link href="#home" className="hover:text-[#7099FF] transition-colors">
                   Home
                 </Link>
-                <Link href="#about" className="hover:text-[#E9E778] transition-colors">
+                <Link href="#about" className="hover:text-[#7099FF] transition-colors">
                   Company
                 </Link>
-                <Link href="#services" className="hover:text-[#E9E778] transition-colors">
+                <Link href="#services" className="hover:text-[#7099FF] transition-colors">
                   Capabilities
                 </Link>
-                <Link href="#gallery" className="hover:text-[#E9E778] transition-colors">
+                <Link href="#gallery" className="hover:text-[#7099FF] transition-colors">
                   Facility Tour
                 </Link>
-                <Link href="#quality" className="hover:text-[#E9E778] transition-colors">
+                <Link href="#quality" className="hover:text-[#7099FF] transition-colors">
                   Quality & ISO
                 </Link>
-                <Link href="#clients" className="hover:text-[#E9E778] transition-colors">
+                <Link href="#clients" className="hover:text-[#7099FF] transition-colors">
                   OEM Clients
                 </Link>
               </div>
@@ -115,28 +115,28 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <h4 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white">
+                <h4 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-[#D5E0FF]">
                   Success Engineering Enterprises
                 </h4>
-                <p className="text-xs text-[#E9E778] font-mono font-bold uppercase tracking-wider mt-0.5">
+                <p className="text-xs text-[#7099FF] font-mono font-bold uppercase tracking-wider mt-0.5">
                   An ISO 9001:2015 Certified Company • Over 20 Years
                 </p>
               </div>
             </div>
 
             {/* Physical Logistics */}
-            <div className="space-y-4 text-sm text-[#D2CDC4]">
+            <div className="space-y-4 text-sm text-[#D5E0FF]/80">
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#E9E778] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-[#7099FF] flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-mono text-xs font-bold uppercase text-white tracking-wider">
+                  <div className="font-mono text-xs font-bold uppercase text-[#D5E0FF] tracking-wider">
                     Manufacturing Facility & Head Office:
                   </div>
                   <a
                     href={COMPANY_INFO.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#E9E778] transition-colors leading-relaxed block mt-0.5"
+                    className="hover:text-[#7099FF] transition-colors leading-relaxed block mt-0.5"
                   >
                     DP-S-67, SIDCO Industrial Estate,
                     <br />
@@ -146,14 +146,14 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-[#E9E778] flex-shrink-0" />
+                <Phone className="w-5 h-5 text-[#7099FF] flex-shrink-0" />
                 <div>
-                  <span className="font-mono text-xs font-bold uppercase text-white tracking-wider block">
+                  <span className="font-mono text-xs font-bold uppercase text-[#D5E0FF] tracking-wider block">
                     Direct Helpline:
                   </span>
                   <a
                     href={`tel:${COMPANY_INFO.phone}`}
-                    className="hover:text-[#E9E778] font-mono font-semibold transition-colors"
+                    className="hover:text-[#7099FF] font-mono font-semibold transition-colors"
                   >
                     {COMPANY_INFO.phoneDisplay}
                   </a>
@@ -161,21 +161,21 @@ export default function Footer() {
               </div>
 
               <div className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-[#E9E778] flex-shrink-0 mt-0.5" />
+                <Mail className="w-5 h-5 text-[#7099FF] flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-mono text-xs font-bold uppercase text-white tracking-wider block">
+                  <span className="font-mono text-xs font-bold uppercase text-[#D5E0FF] tracking-wider block">
                     Technical & Commercial Inquiries:
                   </span>
                   <div className="space-y-0.5 mt-0.5 font-mono text-xs">
                     <a
                       href={`mailto:${COMPANY_INFO.emails[0]}`}
-                      className="hover:text-[#E9E778] block transition-colors"
+                      className="hover:text-[#7099FF] block transition-colors"
                     >
                       {COMPANY_INFO.emails[0]}
                     </a>
                     <a
                       href={`mailto:${COMPANY_INFO.emails[1]}`}
-                      className="hover:text-[#E9E778] block transition-colors"
+                      className="hover:text-[#7099FF] block transition-colors"
                     >
                       {COMPANY_INFO.emails[1]}
                     </a>
@@ -185,8 +185,8 @@ export default function Footer() {
             </div>
 
             {/* ISO Badge Bar */}
-            <div className="flex items-center gap-4 pt-4 border-t border-white/10">
-              <div className="relative w-12 h-12 bg-white rounded-xl p-1.5 flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center gap-4 pt-4 border-t border-[#D5E0FF]/15">
+              <div className="relative w-12 h-12 bg-white rounded-xl p-1.5 flex items-center justify-center flex-shrink-0 shadow">
                 <Image
                   src={getAssetPath("/images/ISO_LOGO.png")}
                   alt="ISO"
@@ -195,8 +195,8 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <div className="text-xs text-[#988F8B] leading-snug">
-                <strong className="text-white">Certified by UCAS India Pvt. Ltd.</strong>
+              <div className="text-xs text-[#D5E0FF]/70 leading-snug">
+                <strong className="text-[#D5E0FF]">Certified by UCAS India Pvt. Ltd.</strong>
                 <br />
                 Scope: Press tools, sheet metal stamping, structural welding & turnkey assemblies.
               </div>
@@ -205,12 +205,12 @@ export default function Footer() {
         </div>
 
         {/* Legal & Attribution Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#988F8B]">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#D5E0FF]/60">
           <div>
             © {new Date().getFullYear()} Success Engineering Enterprises. All Rights Reserved.
           </div>
-          <div className="text-[11px] text-[#7A716D]">
-            Design inspired by Floema® (Bürocratik Awwwards SOTM) • Built with Next.js
+          <div className="text-[11px] text-[#7099FF]">
+            Design inspired by Hubtown (Unseen Studio Awwwards SOTD) • Built with Next.js
           </div>
         </div>
       </div>

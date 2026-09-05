@@ -38,7 +38,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F2EFEA] text-[#241F21] selection:bg-[#241F21] selection:text-[#E9E778] relative">
+    <div className="min-h-screen flex flex-col bg-[#020A19] text-[#D5E0FF] selection:bg-[#7099FF] selection:text-[#020A19] relative">
       {/* Floema Signature Top Progress Line & Curtain Reveal */}
       <FloemaLoader />
 

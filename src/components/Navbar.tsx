@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, ArrowUpRight, Menu, X, ShieldCheck, MapPin } from "lucide-react";
+import { Search, ArrowUpRight, Menu, X, ShieldCheck, Activity } from "lucide-react";
 import { COMPANY_INFO } from "@/data/websiteData";
 import { getAssetPath } from "@/lib/basePath";
 
@@ -31,17 +31,17 @@ export default function Navbar({
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-12 pt-4 pointer-events-none">
       <div className="container mx-auto max-w-7xl flex items-center justify-between pointer-events-auto">
-        {/* Floating Capsule Bar (Floema Style) */}
-        <div className={`w-full flex items-center justify-between px-4 sm:px-6 py-3 rounded-full transition-all duration-500 ${
+        {/* Hubtown Floating Glass Bar */}
+        <div className={`w-full flex items-center justify-between px-5 sm:px-7 py-3.5 rounded-2xl transition-all duration-500 border ${
           isScrolled
-            ? "bg-[#F2EFEA]/90 backdrop-blur-md shadow-lg border border-[#241F21]/10 shadow-[#241F21]/5"
-            : "bg-[#FFFFFF]/90 backdrop-blur-sm border border-[#241F21]/8 shadow-sm"
+            ? "bg-[#020A19]/85 backdrop-blur-2xl border-[#D5E0FF]/20 shadow-2xl shadow-black/80"
+            : "bg-[#020A19]/60 backdrop-blur-xl border-[#D5E0FF]/10 shadow-lg"
         }`}>
           {/* Brand Logo & Editorial Title */}
-          <Link href="#home" className="flex items-center gap-3 group">
-            <div className="relative w-9 h-9 rounded-full bg-white p-1 border border-[#241F21]/10 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
+          <Link href="#home" className="flex items-center gap-3.5 group">
+            <div className="relative w-9 h-9 rounded-xl bg-white p-1 border border-[#D5E0FF]/30 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105 shadow-md shadow-[#D5E0FF]/10">
               <Image
                 src={getAssetPath("/images/logo.png")}
                 alt="Success Engineering Logo"
@@ -52,83 +52,81 @@ export default function Navbar({
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm sm:text-base font-black tracking-tight uppercase text-[#241F21] leading-none">
-                Success®
+              <span className="text-sm sm:text-base font-bold tracking-tight uppercase text-white font-['Space_Grotesk'] leading-none">
+                Success Engineering
               </span>
-              <span className="text-[10px] font-mono font-medium text-[#7A716D] uppercase tracking-wider mt-0.5">
-                Engineering Enterprises
+              <span className="text-[10px] font-mono text-[#D5E0FF]/70 uppercase tracking-widest mt-0.5">
+                Precision Manufacturing // Kakkalur
               </span>
             </div>
           </Link>
 
-          {/* Floema Desktop Pill Menu */}
-          <nav className="hidden lg:flex items-center gap-1.5 font-medium text-xs uppercase tracking-wider text-[#241F21]/80">
+          {/* Hubtown Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-[#D5E0FF]/75">
             <Link
               href="#about"
-              className="px-3.5 py-2 rounded-full hover:text-[#241F21] hover:bg-[#241F21]/5 transition-all"
+              className="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-[#D5E0FF]/10 transition-all"
             >
-              Company
+              Enterprise
             </Link>
             <Link
               href="#services"
-              className="px-3.5 py-2 rounded-full hover:text-[#241F21] hover:bg-[#241F21]/5 transition-all"
+              className="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-[#D5E0FF]/10 transition-all"
             >
               Capabilities
             </Link>
             <Link
               href="#gallery"
-              className="px-3.5 py-2 rounded-full hover:text-[#241F21] hover:bg-[#241F21]/5 transition-all"
+              className="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-[#D5E0FF]/10 transition-all"
             >
-              Facility Tour
+              Toolroom Tour
             </Link>
             <Link
               href="#quality"
-              className="px-3.5 py-2 rounded-full hover:text-[#241F21] hover:bg-[#241F21]/5 transition-all"
+              className="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-[#D5E0FF]/10 transition-all"
             >
-              Quality & ISO
+              ISO 9001:2015
             </Link>
             <Link
               href="#clients"
-              className="px-3.5 py-2 rounded-full hover:text-[#241F21] hover:bg-[#241F21]/5 transition-all"
+              className="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-[#D5E0FF]/10 transition-all"
             >
-              Clients
+              Partners
             </Link>
             <Link
               href="#contact"
-              className="px-3.5 py-2 rounded-full hover:text-[#241F21] hover:bg-[#241F21]/5 transition-all"
+              className="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-[#D5E0FF]/10 transition-all"
             >
               Contact
             </Link>
           </nav>
 
           {/* Right Action Cluster */}
-          <div className="flex items-center gap-2.5">
-            {/* Search Capsule Trigger */}
+          <div className="flex items-center gap-3">
+            {/* Search Trigger */}
             <button
               onClick={onOpenSearch}
-              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#241F21]/10 hover:border-[#241F21]/30 text-xs text-[#7A716D] hover:text-[#241F21] transition-all bg-[#F2EFEA]/50"
-              title="Search Capabilities"
+              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#D5E0FF]/15 hover:border-[#D5E0FF]/40 text-xs font-mono text-[#D5E0FF]/70 hover:text-white transition-all bg-[#D5E0FF]/5"
+              title="Search System Index"
             >
               <Search className="w-3.5 h-3.5" />
-              <span className="font-mono text-[11px] uppercase tracking-wider">Search</span>
+              <span className="text-[11px] uppercase tracking-wider">Search</span>
             </button>
 
-            {/* Floema Signature Magnetic CTA Button */}
+            {/* Hubtown Solid Light Button */}
             <button
               onClick={onOpenQuote}
-              data-cursor="QUOTE"
-              className="floema-btn floema-btn-dark text-xs py-2.5 px-4 sm:px-5 group flex items-center gap-2 shadow-md"
+              data-cursor="RFQ"
+              className="hubtown-btn-solid text-xs py-2 px-4 sm:px-5 group"
             >
-              <span>Get a Quote</span>
-              <span className="w-5 h-5 rounded-full bg-[#E9E778] text-[#241F21] flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
-                <ArrowUpRight className="w-3 h-3" />
-              </span>
+              <span>Request RFQ</span>
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-45" />
             </button>
 
             {/* Mobile Hamburger */}
             <button
               onClick={onToggleMobileMenu}
-              className="lg:hidden p-2 rounded-full hover:bg-[#241F21]/5 text-[#241F21] transition-colors"
+              className="lg:hidden p-2 rounded-lg text-[#D5E0FF] hover:bg-[#D5E0FF]/10 transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Check, X, Layers, Tag, MapPin, ChevronRight, SlidersHorizontal } from "lucide-react";
+import { ArrowUpRight, X, MapPin } from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "@/data/websiteData";
 
 interface ServicesShowcaseProps {
@@ -20,25 +20,33 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
     : SERVICES_DATA.filter((s) => s.category.toLowerCase().includes(selectedCategory.toLowerCase()));
 
   return (
-    <section id="services" className="py-24 sm:py-32 bg-[#F2EFEA] text-[#241F21] relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+    <section id="services" className="py-24 sm:py-32 bg-[#040E24] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+      {/* Background Glow */}
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[#7099FF]/5 blur-[140px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
-            <span className="floema-pill floema-pill-stone mb-4">
-              02 • Manufacturing Capabilities
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#241F21] leading-tight">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="hubtown-tag">
+                [ 02 // PRODUCTION BAYS ]
+              </span>
+              <span className="font-mono text-[11px] text-[#7099FF]">
+                5 ACTIVE CELLS
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
               Five Integrated Production Bays Under One Roof.
             </h2>
           </div>
 
-          <p className="max-w-md text-sm sm:text-base text-[#7A716D] font-normal leading-relaxed">
+          <p className="max-w-md text-sm sm:text-base text-[#D5E0FF]/70 font-normal leading-relaxed">
             From raw coils to finished sub-assemblies. Hover over each card to preview alternate tooling configurations and inspection views.
           </p>
         </div>
 
-        {/* Floema Filter Tabs */}
+        {/* Hubtown Filter Tabs */}
         <div className="flex flex-wrap items-center gap-2 mb-12 pb-4 overflow-x-auto">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat;
@@ -48,8 +56,8 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 ${
                   isActive
-                    ? "bg-[#241F21] text-[#E9E778] shadow-md scale-105"
-                    : "bg-white text-[#7A716D] hover:text-[#241F21] border border-[#241F21]/8 hover:border-[#241F21]/20"
+                    ? "bg-[#D5E0FF] text-[#020A19] shadow-md shadow-[#7099FF]/20 scale-105"
+                    : "bg-[#020A19]/80 text-[#D5E0FF]/70 hover:text-white border border-[#D5E0FF]/15 hover:border-[#7099FF]/40"
                 }`}
               >
                 {cat}
@@ -58,7 +66,7 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
           })}
         </div>
 
-        {/* Services Grid (Floema Card Design) */}
+        {/* Services Grid (Hubtown Beveled Design) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredServices.map((service) => (
             <div
@@ -66,11 +74,11 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
               id={`service-${service.id}`}
               data-cursor="EXPAND"
               onClick={() => setSelectedService(service)}
-              className="floema-card bg-white p-6 cursor-pointer flex flex-col justify-between group hover:-translate-y-1.5 transition-all duration-500"
+              className="hubtown-beveled bg-[#020A19]/80 border border-[#D5E0FF]/15 hover:border-[#7099FF]/50 p-6 cursor-pointer flex flex-col justify-between group hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#7099FF]/10 transition-all duration-500 backdrop-blur-md"
             >
               <div>
                 {/* Image Container with smooth crossfade */}
-                <div className="relative aspect-[16/11] w-full rounded-2xl overflow-hidden bg-[#EBE7DF] mb-6">
+                <div className="relative aspect-[16/11] w-full hubtown-beveled overflow-hidden bg-[#040E24] mb-6 border border-[#D5E0FF]/10">
                   {/* Default Image */}
                   <Image
                     src={service.defaultImg}
@@ -90,49 +98,49 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
 
                   {/* Badges */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                    <span className="floema-pill floema-pill-dark text-[10px]">
+                    <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#020A19]/80 border border-[#D5E0FF]/20 text-[#D5E0FF]">
                       {service.number}
                     </span>
-                    <span className="floema-pill floema-pill-fluor text-[10px]">
+                    <span className="hubtown-tag text-[10px]">
                       {service.tag}
                     </span>
                   </div>
 
                   {/* Bay Tag */}
-                  <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-[11px] font-mono flex items-center gap-1.5">
-                    <MapPin className="w-3 h-3 text-[#E9E778]" />
+                  <div className="absolute bottom-3 left-3 bg-[#020A19]/80 backdrop-blur-md border border-[#D5E0FF]/20 text-[#D5E0FF] px-3 py-1 rounded-full text-[11px] font-mono flex items-center gap-1.5">
+                    <MapPin className="w-3 h-3 text-[#7099FF]" />
                     <span>{service.hallOrBay}</span>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div>
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#988F8B]">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#7099FF]">
                     {service.category}
                   </span>
-                  <h3 className="mt-1 text-xl font-bold uppercase tracking-tight text-[#241F21] group-hover:text-[#241F21] transition-colors">
+                  <h3 className="mt-1 text-xl font-bold uppercase tracking-tight text-[#D5E0FF] group-hover:text-white transition-colors">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-sm text-[#7A716D] line-clamp-3 leading-relaxed">
+                  <p className="mt-3 text-sm text-[#D5E0FF]/65 line-clamp-3 leading-relaxed">
                     {service.shortDesc}
                   </p>
                 </div>
               </div>
 
               {/* Card Footer: Materials & Action */}
-              <div className="mt-6 pt-4 border-t border-[#241F21]/8 flex items-center justify-between">
+              <div className="mt-6 pt-4 border-t border-[#D5E0FF]/10 flex items-center justify-between">
                 <div className="flex flex-wrap gap-1">
                   {service.materials.slice(0, 2).map((mat, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-0.5 rounded-md bg-[#F2EFEA] text-[#7A716D] text-[11px] font-mono"
+                      className="px-2.5 py-0.5 rounded-md bg-[#040E24] border border-[#D5E0FF]/10 text-[#D5E0FF]/70 text-[11px] font-mono"
                     >
                       {mat}
                     </span>
                   ))}
                 </div>
 
-                <span className="w-8 h-8 rounded-full bg-[#F2EFEA] group-hover:bg-[#E9E778] text-[#241F21] flex items-center justify-center transition-colors">
+                <span className="w-8 h-8 rounded-full bg-[#040E24] border border-[#D5E0FF]/20 group-hover:bg-[#D5E0FF] group-hover:text-[#020A19] text-[#D5E0FF] flex items-center justify-center transition-all">
                   <ArrowUpRight className="w-4 h-4" />
                 </span>
               </div>
@@ -143,31 +151,31 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
         {/* Modal: Detailed Service Inspection */}
         {selectedService && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#241F21]/70 backdrop-blur-sm animate-in fade-in duration-200"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#020A19]/80 backdrop-blur-md animate-in fade-in duration-200"
             onClick={() => setSelectedService(null)}
           >
             <div
-              className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8 text-[#241F21] animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-2xl bg-[#040E24] rounded-3xl shadow-2xl border border-[#D5E0FF]/25 overflow-hidden p-6 sm:p-8 text-[#D5E0FF] animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <span className="floema-pill floema-pill-fluor text-xs mb-2">
+                  <span className="hubtown-tag text-xs mb-2">
                     {selectedService.hallOrBay}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#241F21]">
+                  <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#D5E0FF]">
                     {selectedService.title}
                   </h3>
                 </div>
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="p-2 rounded-full hover:bg-[#F2EFEA] text-[#241F21] transition-colors"
+                  className="p-2 rounded-full hover:bg-[#081636] text-[#D5E0FF]/70 hover:text-white transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 bg-[#EBE7DF]">
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 bg-[#020A19] border border-[#D5E0FF]/15">
                 <Image
                   src={selectedService.defaultImg}
                   alt={selectedService.title}
@@ -176,32 +184,32 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
                 />
               </div>
 
-              <p className="text-sm sm:text-base text-[#7A716D] leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-[#D5E0FF]/75 leading-relaxed mb-6">
                 {selectedService.fullDesc}
               </p>
 
               <div className="space-y-4 mb-6">
-                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#241F21]">
+                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#7099FF]">
                   Technical Specifications & Equipment:
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-[#7A716D]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-[#D5E0FF]/70">
                   {selectedService.specs.map((spec, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E9E778] mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#7099FF] mt-2 flex-shrink-0" />
                       <span>{spec}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#241F21]/10 flex items-center justify-between">
+              <div className="pt-4 border-t border-[#D5E0FF]/10 flex items-center justify-between">
                 <button
                   onClick={() => {
                     const name = selectedService.title;
                     setSelectedService(null);
                     onOpenQuoteWithService(name);
                   }}
-                  className="floema-btn floema-btn-fluor text-xs py-3 px-6 shadow-md"
+                  className="hubtown-btn-solid text-xs py-3 px-6 shadow-lg shadow-[#7099FF]/20"
                 >
                   <span>Request RFQ for this Bay</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -209,7 +217,7 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
 
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="text-xs font-mono font-bold uppercase tracking-wider text-[#7A716D] hover:text-[#241F21]"
+                  className="text-xs font-mono font-bold uppercase tracking-wider text-[#D5E0FF]/60 hover:text-white"
                 >
                   Close
                 </button>

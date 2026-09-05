@@ -11,12 +11,11 @@ export default function FloemaCursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  const springConfig = { damping: 28, stiffness: 350, mass: 0.5 };
+  const springConfig = { damping: 25, stiffness: 320, mass: 0.4 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    // Only enable on fine pointer (mouse)
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -24,12 +23,11 @@ export default function FloemaCursor() {
       mouseY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
 
-      // Check hovered element for data-cursor attribute
       const target = e.target as HTMLElement | null;
       const cursorTarget = target?.closest("[data-cursor]") as HTMLElement | null;
 
       if (cursorTarget) {
-        const text = cursorTarget.getAttribute("data-cursor") || "VIEW";
+        const text = cursorTarget.getAttribute("data-cursor") || "EXPLORE";
         setCursorText(text);
         setIsHovered(true);
       } else {
@@ -65,20 +63,20 @@ export default function FloemaCursor() {
     >
       <motion.div
         animate={{
-          scale: isHovered ? 1 : 0.6,
-          backgroundColor: isHovered ? "#E9E778" : "#241F21",
-          color: "#241F21",
+          scale: isHovered ? 1 : 0.5,
+          backgroundColor: isHovered ? "rgba(213, 224, 255, 0.95)" : "#D5E0FF",
+          color: "#020A19",
+          paddingLeft: isHovered ? 16 : 5,
+          paddingRight: isHovered ? 16 : 5,
+          paddingTop: isHovered ? 8 : 5,
+          paddingBottom: isHovered ? 8 : 5,
           borderRadius: isHovered ? 9999 : 9999,
-          paddingLeft: isHovered ? 16 : 6,
-          paddingRight: isHovered ? 16 : 6,
-          paddingTop: isHovered ? 8 : 6,
-          paddingBottom: isHovered ? 8 : 6,
           boxShadow: isHovered
-            ? "0 12px 30px rgba(36, 31, 33, 0.25)"
-            : "0 0 0 rgba(0,0,0,0)",
+            ? "0 0 35px rgba(213, 224, 255, 0.6), 0 0 60px rgba(112, 153, 255, 0.4)"
+            : "0 0 15px rgba(213, 224, 255, 0.8)",
         }}
         transition={{ type: "spring", damping: 20, stiffness: 300 }}
-        className="flex items-center justify-center font-mono text-[11px] font-bold uppercase tracking-wider select-none overflow-hidden"
+        className="flex items-center justify-center font-mono text-[10px] font-bold uppercase tracking-wider select-none backdrop-blur-md"
       >
         {isHovered && <span>{cursorText}</span>}
       </motion.div>

@@ -10,24 +10,29 @@ interface StackingCardsProps {
 
 export default function StackingCards({ onOpenQuote }: StackingCardsProps) {
   const cardColors = [
-    "bg-[#241F21]",
-    "bg-[#2B2527]",
-    "bg-[#322B2E]",
-    "bg-[#1D181A]",
+    "bg-[#020A19]",
+    "bg-[#040E24]",
+    "bg-[#061433]",
+    "bg-[#030C22]",
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-[#F9F8F6] text-[#241F21] relative overflow-hidden">
+    <section className="py-24 sm:py-32 bg-[#040E24] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <span className="floema-pill floema-pill-stone mb-4">
-            04 • Architectural Pillars
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#241F21] leading-tight">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="hubtown-tag">
+              [ 04 // ARCHITECTURAL PILLARS ]
+            </span>
+            <span className="font-mono text-[11px] text-[#7099FF]">
+              RELIABILITY MATRIX
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
             Engineered for Million-Cycle Repeatability.
           </h2>
-          <p className="mt-4 text-base text-[#7A716D] font-normal leading-relaxed">
+          <p className="mt-4 text-base text-[#D5E0FF]/70 font-normal leading-relaxed">
             Our operational framework is structured to eliminate supply chain variances and guarantee strict micron tolerances across every mass production run.
           </p>
         </div>
@@ -38,15 +43,15 @@ export default function StackingCards({ onOpenQuote }: StackingCardsProps) {
             <div
               key={card.id}
               style={{ top: `${100 + idx * 30}px` }}
-              className={`sticky rounded-[32px] p-8 sm:p-12 text-[#F2EFEA] ${cardColors[idx % cardColors.length]} shadow-2xl border border-white/10 transition-transform duration-500`}
+              className={`sticky hubtown-beveled p-8 sm:p-12 text-[#D5E0FF] ${cardColors[idx % cardColors.length]} shadow-2xl border border-[#D5E0FF]/20 transition-transform duration-500 backdrop-blur-xl`}
             >
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                 <div className="max-w-2xl">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl sm:text-4xl font-black font-mono text-[#E9E778]">
+                    <span className="text-3xl sm:text-4xl font-black font-mono text-[#7099FF]">
                       0{card.id}
                     </span>
-                    <span className="floema-pill floema-pill-dark text-xs border border-white/20">
+                    <span className="hubtown-tag text-xs">
                       {card.badge}
                     </span>
                   </div>
@@ -55,7 +60,7 @@ export default function StackingCards({ onOpenQuote }: StackingCardsProps) {
                     {card.title}
                   </h3>
 
-                  <p className="mt-4 text-sm sm:text-base text-[#D2CDC4] leading-relaxed">
+                  <p className="mt-4 text-sm sm:text-base text-[#D5E0FF]/75 leading-relaxed">
                     {card.text}
                   </p>
 
@@ -63,7 +68,7 @@ export default function StackingCards({ onOpenQuote }: StackingCardsProps) {
                     {card.points.map((p, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-white/90"
+                        className="px-3 py-1 rounded-full bg-[#D5E0FF]/10 border border-[#D5E0FF]/15 text-xs font-mono text-[#D5E0FF]"
                       >
                         ✓ {p}
                       </span>
@@ -75,7 +80,7 @@ export default function StackingCards({ onOpenQuote }: StackingCardsProps) {
                   <button
                     onClick={onOpenQuote}
                     data-cursor="QUOTE"
-                    className="floema-btn floema-btn-fluor text-xs py-3.5 px-6 shadow-xl"
+                    className="hubtown-btn-solid text-xs py-3.5 px-6 shadow-xl shadow-[#7099FF]/20"
                   >
                     <span>Partner with Us</span>
                     <ArrowUpRight className="w-4 h-4" />

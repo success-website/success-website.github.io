@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ShieldCheck, Factory, Cpu, Sparkles, MapPin } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Factory, Sparkles, MapPin, Compass, Radio } from "lucide-react";
 import { getAssetPath } from "@/lib/basePath";
 
 interface BannerPreloaderProps {
@@ -12,239 +12,228 @@ interface BannerPreloaderProps {
 }
 
 export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 40, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.19, 1, 0.22, 1],
-      },
-    },
-  };
-
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-[#F2EFEA] text-[#241F21] overflow-hidden pt-28 sm:pt-36 pb-16 flex flex-col justify-between"
+      className="relative min-h-screen bg-[#020A19] text-[#D5E0FF] overflow-hidden pt-28 sm:pt-36 pb-16 flex flex-col justify-between"
     >
-      {/* Background Architectural Grid Lines & Organic Fluor Glow */}
+      {/* Cinematic Ambient Glows & Grid Mesh (Hubtown Style) */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-40 right-[-10%] w-[600px] h-[600px] rounded-full bg-[#E9E778]/20 blur-3xl" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#FF004D]/5 blur-3xl" />
-        
-        {/* Delicate architectural vertical column guides */}
-        <div className="container mx-auto h-full px-4 sm:px-6 lg:px-12 grid grid-cols-6 lg:grid-cols-12 opacity-15">
+        {/* Deep radial background lighting */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#7099FF]/15 blur-[140px] rounded-full" />
+        <div className="absolute top-10 right-10 w-[400px] h-[400px] bg-[#38BDF8]/10 blur-[100px] rounded-full" />
+
+        {/* Technical Coordinate Overlay Lines */}
+        <div className="container mx-auto h-full px-4 sm:px-6 lg:px-12 grid grid-cols-6 lg:grid-cols-12 opacity-10">
           {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="border-r border-[#241F21] h-full hidden lg:block" />
+            <div key={i} className="border-r border-[#D5E0FF] h-full hidden lg:block" />
           ))}
         </div>
       </div>
 
       {/* Main Hero Container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 my-auto">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-4xl"
-        >
-          {/* Floema Top Pill Tag */}
-          <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
-            <span className="floema-pill floema-pill-dark flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#E9E778] animate-pulse" />
-              <span>Established 2004 • SIDCO Kakkalur, India</span>
+        <div className="max-w-4xl">
+          {/* Technical Coordinate Telemetry Pill */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-wrap items-center gap-2.5 mb-6"
+          >
+            <span className="hubtown-tag flex items-center gap-2">
+              <Radio className="w-3 h-3 text-[#38BDF8] animate-pulse" />
+              <span>COORDS: 13.1438° N, 79.9082° E // SIDCO KAKKALUR</span>
             </span>
-            <span className="hidden sm:inline-flex floema-pill floema-pill-fluor">
-              ISO 9001:2015 Certified
+            <span className="hidden sm:inline-flex hubtown-tag">
+              ISO 9001:2015 CERTIFIED // UCAS INDIA
             </span>
           </motion.div>
 
-          {/* Staggered Editorial Headline (Floema Style) */}
+          {/* Cinematic Headline (Hubtown Inspired) */}
           <motion.h1
-            variants={itemVariants}
-            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight text-[#241F21] leading-[0.95]"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.2, 0, 0, 1] }}
+            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight text-white font-['Space_Grotesk'] leading-[0.95]"
           >
-            Spaces for Industry,
-            <br />
-            <span className="text-[#241F21]/90">Made for Precision.</span>
+            Engineered for <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D5E0FF] via-white to-[#7099FF]">
+              Extreme Precision.
+            </span>
           </motion.h1>
 
-          {/* Architectural Sub-narrative */}
+          {/* Technical Subtitle */}
           <motion.p
-            variants={itemVariants}
-            className="mt-6 sm:mt-8 text-base sm:text-xl text-[#7A716D] font-normal leading-relaxed max-w-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.2, 0, 0, 1] }}
+            className="mt-6 sm:mt-8 text-base sm:text-lg text-[#D5E0FF]/70 font-normal leading-relaxed max-w-2xl"
           >
-            Over 20 years of progressive press tool design, 250-ton automated hydraulic stamping, structural industrial welding, and turnkey sub-assembly for global tier-1 automotive and industrial OEMs.
+            Two decades of specialized press tool engineering, 250-ton progressive hydraulic stamping, certified structural robotic welding, and turnkey sub-assembly for global tier-1 automotive, elevator, and infrastructure OEMs.
           </motion.p>
 
           {/* Action CTAs */}
-          <motion.div variants={itemVariants} className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.45, ease: [0.2, 0, 0, 1] }}
+            className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
+          >
             <button
               onClick={onOpenQuote}
-              data-cursor="QUOTE"
-              className="floema-btn floema-btn-fluor text-sm py-3.5 px-7 group shadow-lg"
+              data-cursor="RFQ"
+              className="hubtown-btn-solid text-sm py-3.5 px-8 group"
             >
-              <span>Request Manufacturing Quote</span>
-              <span className="w-6 h-6 rounded-full bg-[#241F21] text-[#E9E778] flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </span>
+              <span>Initiate Manufacturing RFQ</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
             </button>
 
             <Link
               href="#services"
               data-cursor="EXPLORE"
-              className="floema-btn floema-btn-outline text-sm py-3.5 px-6"
+              className="hubtown-btn-glass text-sm py-3.5 px-7"
             >
               <span>Explore 5 Production Bays</span>
             </Link>
           </motion.div>
-        </motion.div>
+        </div>
 
-        {/* Floating Capability Cards Showcase (Floema Interaction) */}
+        {/* Cinematic Monolith Image Cards (Hubtown 3D Geometry Aesthetic) */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.19, 1, 0.22, 1] }}
+          transition={{ duration: 1, delay: 0.6, ease: [0.2, 0, 0, 1] }}
           className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {/* Card 1: Tooling & Stamping */}
+          {/* Card 1: 250T Press Line */}
           <div
             data-cursor="STAMPING"
-            className="floema-card p-6 bg-white/90 backdrop-blur-sm group hover:-translate-y-1.5 transition-all duration-500"
+            className="hubtown-beveled p-5 group cursor-pointer"
           >
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-5 bg-[#EBE7DF]">
+            <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-[#040E24] border border-[#D5E0FF]/15">
               <Image
-                src={getAssetPath("/images/2.png")}
-                alt="Precision Metal Parts"
+                src={getAssetPath("/images/2_hover.png")}
+                alt="250 Ton Stamping Press Bank"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020A19] via-transparent to-transparent" />
               <div className="absolute top-3 left-3">
-                <span className="floema-pill floema-pill-fluor text-[10px]">
-                  20T – 250T Press Line
+                <span className="hubtown-tag text-[9px]">
+                  250T HYDRAULIC LINE
                 </span>
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-base uppercase tracking-tight text-[#241F21]">
-                01 • Precision Stamping
+              <h3 className="font-bold text-base uppercase tracking-tight text-white font-['Space_Grotesk']">
+                01 // High-Tonnage Stamping
               </h3>
-              <span className="text-xs font-mono text-[#988F8B]">Bay 2</span>
+              <span className="text-xs font-mono text-[#7099FF]">BAY 2</span>
             </div>
-            <p className="mt-2 text-xs text-[#7A716D] leading-relaxed">
-              Automated high-repeatability pressings and deep-draw brackets.
+            <p className="mt-2 text-xs text-[#D5E0FF]/60 leading-relaxed font-mono">
+              Deep-draw stamping, automated de-coiling, progressive dies.
             </p>
           </div>
 
-          {/* Card 2: Progressive Toolroom */}
+          {/* Card 2: Precision Toolroom */}
           <div
             data-cursor="TOOLROOM"
-            className="floema-card p-6 bg-white/90 backdrop-blur-sm group hover:-translate-y-1.5 transition-all duration-500"
+            className="hubtown-beveled p-5 group cursor-pointer"
           >
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-5 bg-[#EBE7DF]">
+            <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-[#040E24] border border-[#D5E0FF]/15">
               <Image
                 src={getAssetPath("/images/5.png")}
-                alt="Progressive Dies & Tooling"
+                alt="Tool and Die Toolroom"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020A19] via-transparent to-transparent" />
               <div className="absolute top-3 left-3">
-                <span className="floema-pill floema-pill-dark text-[10px]">
-                  Multi-Million Cycle Dies
+                <span className="hubtown-tag text-[9px]">
+                  MULTI-MILLION CYCLES
                 </span>
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-base uppercase tracking-tight text-[#241F21]">
-                02 • Tool & Die Toolroom
+              <h3 className="font-bold text-base uppercase tracking-tight text-white font-['Space_Grotesk']">
+                02 // Progressive Die Toolroom
               </h3>
-              <span className="text-xs font-mono text-[#988F8B]">Bay 5</span>
+              <span className="text-xs font-mono text-[#7099FF]">BAY 5</span>
             </div>
-            <p className="mt-2 text-xs text-[#7A716D] leading-relaxed">
-              In-house wire-cut EDM, CNC machining, and hardened D2/D3 tooling.
+            <p className="mt-2 text-xs text-[#D5E0FF]/60 leading-relaxed font-mono">
+              Wire-cut EDM, CNC surface grinding, hardened D2/D3 alloys.
             </p>
           </div>
 
-          {/* Card 3: Quality Certification */}
+          {/* Card 3: Robotic Welding */}
           <div
-            data-cursor="QUALITY"
-            className="floema-card p-6 bg-white/90 backdrop-blur-sm group hover:-translate-y-1.5 transition-all duration-500 sm:col-span-2 lg:col-span-1"
+            data-cursor="WELDING"
+            className="hubtown-beveled p-5 group cursor-pointer sm:col-span-2 lg:col-span-1"
           >
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-5 bg-[#F9F8F6] flex items-center justify-center p-6 border border-[#241F21]/5">
+            <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-[#040E24] border border-[#D5E0FF]/15">
               <Image
-                src={getAssetPath("/images/ISO_LOGO.png")}
-                alt="ISO 9001:2015 Quality"
-                width={120}
-                height={120}
-                className="object-contain transition-transform duration-700 group-hover:scale-110"
+                src={getAssetPath("/images/1.png")}
+                alt="Industrial Welding Cell"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020A19] via-transparent to-transparent" />
               <div className="absolute top-3 left-3">
-                <span className="floema-pill floema-pill-stone text-[10px]">
-                  UCAS India Verified
+                <span className="hubtown-tag text-[9px]">
+                  NDT VERIFIED
                 </span>
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-base uppercase tracking-tight text-[#241F21]">
-                03 • Zero-Defect QA
+              <h3 className="font-bold text-base uppercase tracking-tight text-white font-['Space_Grotesk']">
+                03 // Heavy Structural Welding
               </h3>
-              <span className="text-xs font-mono text-[#988F8B]">ISO 9001</span>
+              <span className="text-xs font-mono text-[#7099FF]">BAY 1</span>
             </div>
-            <p className="mt-2 text-xs text-[#7A716D] leading-relaxed">
-              Certified metrology laboratory, SPC tracking, and NDT weld testing.
+            <p className="mt-2 text-xs text-[#D5E0FF]/60 leading-relaxed font-mono">
+              Certified TIG/MIG/Arc welding with custom laser-guided fixtures.
             </p>
           </div>
         </motion.div>
       </div>
 
-      {/* Floema Architectural Metrics Strip */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 mt-16 pt-8 border-t border-[#241F21]/10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* Hubtown Monospace Metrics Telemetry Strip */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 mt-16 pt-8 border-t border-[#D5E0FF]/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 font-mono">
           <div>
-            <div className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-[#241F21]">
-              20<span className="text-[#E9E778]">+</span>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              20<span className="text-[#7099FF]">+</span>
             </div>
-            <div className="text-xs font-mono uppercase tracking-wider text-[#7A716D] mt-1">
-              Years in Manufacturing
+            <div className="text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
+              Years in Operation
             </div>
           </div>
           <div>
-            <div className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-[#241F21]">
-              250<span className="text-[#E9E778]">T</span>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              250<span className="text-[#7099FF]">T</span>
             </div>
-            <div className="text-xs font-mono uppercase tracking-wider text-[#7A716D] mt-1">
-              Heavy Press Capacity
+            <div className="text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
+              Stamping Press Capacity
             </div>
           </div>
           <div>
-            <div className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-[#241F21]">
-              5<span className="text-[#E9E778]">BAYS</span>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              0.01<span className="text-[#7099FF]">MM</span>
             </div>
-            <div className="text-xs font-mono uppercase tracking-wider text-[#7A716D] mt-1">
+            <div className="text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
+              Micron Tolerance Standard
+            </div>
+          </div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              5<span className="text-[#7099FF]">BAYS</span>
+            </div>
+            <div className="text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
               Integrated Production Cells
-            </div>
-          </div>
-          <div>
-            <div className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-[#241F21]">
-              100<span className="text-[#E9E778]">%</span>
-            </div>
-            <div className="text-xs font-mono uppercase tracking-wider text-[#7A716D] mt-1">
-              Batch Traceability
             </div>
           </div>
         </div>

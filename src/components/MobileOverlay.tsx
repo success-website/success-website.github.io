@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Search, ChevronRight, Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
-import { COMPANY_INFO, SERVICES_DATA } from "@/data/websiteData";
+import { X, Search, ChevronRight, ArrowUpRight } from "lucide-react";
+import { SERVICES_DATA } from "@/data/websiteData";
 
 interface MobileOverlayProps {
   isOpen: boolean;
@@ -29,24 +29,24 @@ export default function MobileOverlay({
         animate={{ opacity: 1, x: "0%" }}
         exit={{ opacity: 0, x: "100%" }}
         transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
-        className="fixed inset-0 z-50 bg-[#241F21] text-[#F2EFEA] flex flex-col justify-between p-6 sm:p-10 overflow-y-auto"
+        className="fixed inset-0 z-50 bg-[#020A19]/98 text-[#D5E0FF] flex flex-col justify-between p-6 sm:p-10 overflow-y-auto backdrop-blur-2xl border-l border-[#D5E0FF]/15"
       >
         {/* Top bar with Search & Close */}
-        <div className="flex items-center justify-between pb-6 border-b border-white/10">
+        <div className="flex items-center justify-between pb-6 border-b border-[#D5E0FF]/15">
           <button
             onClick={() => {
               onClose();
               onOpenSearch();
             }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-xs font-mono font-bold uppercase tracking-wider text-[#E9E778] hover:bg-white/20 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#040E24] text-xs font-mono font-bold uppercase tracking-wider text-[#7099FF] border border-[#D5E0FF]/20 hover:border-[#7099FF] transition-colors"
           >
             <Search className="w-3.5 h-3.5" />
-            <span>Search Capabilities</span>
+            <span>Search Index</span>
           </button>
 
           <button
             onClick={onClose}
-            className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            className="p-2.5 rounded-full bg-[#040E24] hover:bg-[#081636] border border-[#D5E0FF]/20 text-[#D5E0FF] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -58,7 +58,7 @@ export default function MobileOverlay({
             <a
               href="#home"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#E9E778] transition-colors"
+              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               01 • Home
             </a>
@@ -68,21 +68,21 @@ export default function MobileOverlay({
             <a
               href="#about"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#E9E778] transition-colors"
+              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
-              02 • Company
+              02 • Enterprise
             </a>
           </div>
 
           <div>
             <button
               onClick={() => setIsServicesExpanded(!isServicesExpanded)}
-              className="w-full flex items-center justify-between text-3xl sm:text-4xl font-black uppercase tracking-tight hover:text-[#E9E778] transition-colors"
+              className="w-full flex items-center justify-between text-3xl sm:text-4xl font-black uppercase tracking-tight hover:text-[#7099FF] transition-colors"
             >
               <span>03 • Capabilities</span>
               <ChevronRight
                 className={`w-6 h-6 transition-transform duration-300 ${
-                  isServicesExpanded ? "rotate-90 text-[#E9E778]" : ""
+                  isServicesExpanded ? "rotate-90 text-[#7099FF]" : ""
                 }`}
               />
             </button>
@@ -92,14 +92,14 @@ export default function MobileOverlay({
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mt-4 pl-4 border-l-2 border-[#E9E778] space-y-2.5"
+                className="mt-4 pl-4 border-l-2 border-[#7099FF] space-y-2.5"
               >
                 {SERVICES_DATA.map((s) => (
                   <a
                     key={s.id}
                     href={`#service-${s.id}`}
                     onClick={onClose}
-                    className="flex items-center justify-between py-1 text-sm font-mono text-[#D2CDC4] hover:text-[#E9E778]"
+                    className="flex items-center justify-between py-1 text-sm font-mono text-[#D5E0FF]/70 hover:text-[#7099FF]"
                   >
                     <span>{s.title}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
@@ -113,7 +113,7 @@ export default function MobileOverlay({
             <a
               href="#gallery"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#E9E778] transition-colors"
+              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               04 • Facility Tour
             </a>
@@ -123,7 +123,7 @@ export default function MobileOverlay({
             <a
               href="#quality"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#E9E778] transition-colors"
+              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               05 • Quality & ISO
             </a>
@@ -133,9 +133,9 @@ export default function MobileOverlay({
             <a
               href="#clients"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#E9E778] transition-colors"
+              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
-              06 • OEM Clients
+              06 • OEM Partners
             </a>
           </div>
 
@@ -143,7 +143,7 @@ export default function MobileOverlay({
             <a
               href="#contact"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#E9E778] transition-colors"
+              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               07 • Contact
             </a>
@@ -151,19 +151,19 @@ export default function MobileOverlay({
         </div>
 
         {/* Bottom CTA */}
-        <div className="pt-6 border-t border-white/10 space-y-4">
+        <div className="pt-6 border-t border-[#D5E0FF]/15 space-y-4">
           <button
             onClick={() => {
               onClose();
               onOpenQuote();
             }}
-            className="w-full floema-btn floema-btn-fluor text-center font-bold text-sm uppercase shadow-lg"
+            className="w-full hubtown-btn-solid text-center font-bold text-sm uppercase shadow-xl shadow-[#7099FF]/20"
           >
             <span>Request a Custom Quote</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
 
-          <div className="text-xs font-mono text-[#988F8B] text-center">
+          <div className="text-xs font-mono text-[#7099FF] text-center">
             SIDCO Industrial Estate, Kakkalur • ISO 9001:2015
           </div>
         </div>
