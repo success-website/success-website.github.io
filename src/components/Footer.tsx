@@ -204,13 +204,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Legal & Attribution Bar */}
+        {/* Legal Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#D5E0FF]/60">
           <div>
             © {new Date().getFullYear()} Success Engineering Enterprises. All Rights Reserved.
-          </div>
-          <div className="text-[11px] text-[#7099FF]">
-            Design inspired by Hubtown (Unseen Studio Awwwards SOTD) • Built with Next.js
           </div>
         </div>
       </div>
