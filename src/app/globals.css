@@ -165,12 +165,29 @@ body {
   gap: 0.4rem;
 }
 
+/* Zero-blur GPU ambient glow gradients (replaces expensive Gaussian blurs for potato PCs) */
+.ambient-glow-blue {
+  background: radial-gradient(ellipse at center, rgba(112, 153, 255, 0.14) 0%, rgba(112, 153, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.ambient-glow-cyan {
+  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.12) 0%, rgba(56, 189, 248, 0) 70%);
+  pointer-events: none;
+}
+
+/* Extreme Performance: Skip layout/paint of offscreen sections */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
+}
+
 /* Ambient Radial Glows with GPU promotion */
 .hubtown-glow {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(100px);
+  background: radial-gradient(ellipse at center, rgba(112, 153, 255, 0.14) 0%, rgba(112, 153, 255, 0) 70%);
   transform: translateZ(0);
 }
 
@@ -227,4 +244,12 @@ body {
 
 .zoom-in-95 {
   animation-name: modalZoomIn95;
+}
+
+/* Low-power / reduced-motion optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hubtown-marquee,
+  .animate-hubtown-marquee-reverse {
+    animation: none !important;
+  }
 }

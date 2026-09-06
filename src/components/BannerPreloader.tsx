@@ -16,7 +16,12 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    const check = () => {
+      const isLarge = window.innerWidth >= 1024;
+      const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const isPotato = typeof navigator !== "undefined" && typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4;
+      setIsDesktop(isLarge && !isReduced && !isPotato);
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -27,7 +32,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
     offset: ["start start", "end start"],
   });
 
-  // Parallax Layer Transforms (active on desktop)
+  // Parallax Layer Transforms (active on capable desktops)
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const yTitle = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const yCard1 = useTransform(scrollYProgress, [0, 1], [0, 60]);
@@ -41,10 +46,10 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
       className="relative min-h-screen bg-[#020A19] text-[#D5E0FF] overflow-hidden pt-24 sm:pt-36 pb-12 sm:pb-16 flex flex-col justify-between"
     >
       {/* Cinematic Ambient Glows & Grid Mesh with Parallax */}
-      <motion.div style={{ y: yBg }} className="absolute inset-0 pointer-events-none">
-        {/* Deep radial background lighting */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#7099FF]/15 blur-[140px] rounded-full" />
-        <div className="absolute top-10 right-10 w-[400px] h-[400px] bg-[#38BDF8]/10 blur-[100px] rounded-full" />
+      <motion.div style={isDesktop ? { y: yBg } : undefined} className="absolute inset-0 pointer-events-none">
+        {/* Deep radial background lighting (zero-blur GPU gradient for potato PCs) */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full ambient-glow-blue" />
+        <div className="absolute top-10 right-10 w-[400px] h-[400px] rounded-full ambient-glow-cyan" />
 
         {/* Technical Coordinate Overlay Lines */}
         <div className="container mx-auto h-full px-4 sm:px-6 lg:px-12 grid grid-cols-6 lg:grid-cols-12 opacity-10">
@@ -140,6 +145,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
                 src={getAssetPath("/images/2_hover.png")}
                 alt="250 Ton Stamping Press Bank"
                 fill
+                priority
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
@@ -172,6 +178,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
                 src={getAssetPath("/images/5.png")}
                 alt="Tool and Die Toolroom"
                 fill
+                priority
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
@@ -204,6 +211,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
                 src={getAssetPath("/images/1.png")}
                 alt="Industrial Welding Cell"
                 fill
+                priority
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />

@@ -31,10 +31,10 @@ export default function Navbar({
     <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 lg:px-12 pt-3 sm:pt-4 pointer-events-none">
       <div className="container mx-auto max-w-7xl flex items-center justify-between pointer-events-auto">
         {/* Hubtown Floating Glass Bar */}
-        <div className={`w-full flex items-center justify-between px-3.5 sm:px-7 py-2.5 sm:py-3.5 rounded-2xl transition-all duration-500 border ${
+        <div className={`w-full flex items-center justify-between px-3.5 sm:px-7 py-2.5 sm:py-3.5 rounded-2xl transition-all duration-300 border ${
           isScrolled
-            ? "bg-[#020A19]/85 backdrop-blur-2xl border-[#D5E0FF]/20 shadow-2xl shadow-black/80"
-            : "bg-[#020A19]/60 backdrop-blur-xl border-[#D5E0FF]/10 shadow-lg"
+            ? "bg-[#020A19]/95 border-[#D5E0FF]/25 shadow-2xl shadow-black/90"
+            : "bg-[#020A19]/80 border-[#D5E0FF]/15 shadow-lg"
         }`}>
           {/* Brand Logo & Editorial Title */}
           <Link href="#home" className="flex items-center gap-2.5 sm:gap-3.5 group">

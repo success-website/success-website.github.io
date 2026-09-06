@@ -129,10 +129,10 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
 
       {/* Desktop View (>= lg): Sticky Fullscreen Viewport Window (Hubtown Pinned Scroll) */}
       <div className="hidden lg:flex sticky top-0 h-screen w-full overflow-hidden flex-col justify-between py-6 sm:py-8 z-20">
-        {/* Background Ambient Radial Glows */}
+        {/* Background Ambient Radial Glows (zero-blur GPU gradients) */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#7099FF]/10 blur-[150px] rounded-full" />
-          <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-[#38BDF8]/10 blur-[120px] rounded-full" />
+          <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full ambient-glow-blue" />
+          <div className="absolute bottom-10 right-10 w-[400px] h-[400px] rounded-full ambient-glow-cyan" />
         </div>
 
         {/* Top Header & Telemetry Bar */}
@@ -168,7 +168,7 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
             className="flex gap-6 sm:gap-10 items-center px-4 sm:px-8 lg:px-16 will-change-transform"
           >
             {/* Card 0: Section Overview & Telemetry Banner */}
-            <div className="w-[85vw] sm:w-[55vw] lg:w-[38vw] max-w-[560px] h-[64vh] sm:h-[70vh] flex-shrink-0 hubtown-beveled p-8 sm:p-10 bg-gradient-to-br from-[#040E24] via-[#061433] to-[#040E24] border border-[#D5E0FF]/20 flex flex-col justify-between backdrop-blur-xl shadow-2xl">
+            <div className="w-[85vw] sm:w-[55vw] lg:w-[38vw] max-w-[560px] h-[64vh] sm:h-[70vh] flex-shrink-0 hubtown-beveled p-8 sm:p-10 bg-gradient-to-br from-[#040E24] via-[#061433] to-[#040E24] border border-[#D5E0FF]/20 flex flex-col justify-between shadow-2xl">
               <div>
                 <span className="hubtown-tag text-[10px] mb-4 inline-block">
                   SINGLE-SOURCE FACILITY
@@ -205,7 +205,7 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
                 key={service.id}
                 data-cursor="INSPECT"
                 onClick={() => setSelectedService(service)}
-                className="w-[85vw] sm:w-[65vw] lg:w-[48vw] max-w-[740px] h-[64vh] sm:h-[70vh] flex-shrink-0 hubtown-beveled p-6 sm:p-8 bg-[#040E24]/85 border border-[#D5E0FF]/20 hover:border-[#7099FF]/60 flex flex-col justify-between backdrop-blur-xl transition-all duration-500 hover:shadow-2xl hover:shadow-[#7099FF]/15 group cursor-pointer"
+                className="w-[85vw] sm:w-[65vw] lg:w-[48vw] max-w-[740px] h-[64vh] sm:h-[70vh] flex-shrink-0 hubtown-beveled p-6 sm:p-8 bg-[#040E24]/85 border border-[#D5E0FF]/20 hover:border-[#7099FF]/60 flex flex-col justify-between transition-all duration-500 hover:shadow-2xl hover:shadow-[#7099FF]/15 group cursor-pointer"
               >
                 {/* Image Section with Crossfade */}
                 <div className="relative aspect-[16/9] w-full hubtown-beveled overflow-hidden bg-[#020A19] border border-[#D5E0FF]/15">

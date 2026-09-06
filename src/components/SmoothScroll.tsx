@@ -5,13 +5,40 @@ import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    // Only initialize smooth scroll on non-touch desktop devices
-    if (typeof window !== "undefined" && (window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 1024)) {
-      return;
+    const isPotato =
+      typeof navigator !== "undefined" &&
+      typeof navigator.hardwareConcurrency === "number" &&
+      navigator.hardwareConcurrency <= 4;
+    const isReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Use native compositor scrolling on touch, potato PCs, or reduced-motion
+    if (
+      typeof window !== "undefined" &&
+      (window.matchMedia("(pointer: coarse)").matches ||
+        window.innerWidth < 1024 ||
+        isPotato ||
+        isReducedMotion)
+    ) {
+      const handleAnchorClickFallback = (e: MouseEvent) => {
+        const target = (e.target as HTMLElement).closest("a");
+        if (!target) return;
+        const href = target.getAttribute("href");
+        if (href && href.startsWith("#") && href.length > 1) {
+          const el = document.querySelector(href);
+          if (el) {
+            e.preventDefault();
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      };
+      document.addEventListener("click", handleAnchorClickFallback);
+      return () => document.removeEventListener("click", handleAnchorClickFallback);
     }
 
     const lenis = new Lenis({
-      duration: 0.85,
+      duration: 0.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",

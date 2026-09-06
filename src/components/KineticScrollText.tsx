@@ -141,10 +141,10 @@ export default function KineticScrollText({ onOpenQuote }: KineticScrollTextProp
 
       {/* Desktop View (>= lg): Sticky Pinned Viewport Container */}
       <div className="hidden lg:flex sticky top-0 h-screen w-full overflow-hidden flex-col justify-center items-center py-10 px-4 sm:px-6 lg:px-12 z-20">
-        {/* Background Ambient Radial Lights */}
+        {/* Background Ambient Radial Lights (zero-blur GPU gradients) */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#7099FF]/12 blur-[160px] rounded-full" />
-          <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#38BDF8]/10 blur-[130px] rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full ambient-glow-blue" />
+          <div className="absolute bottom-10 right-10 w-[450px] h-[450px] rounded-full ambient-glow-cyan" />
         </div>
 
         <div className="w-full max-w-6xl mx-auto relative z-10 flex flex-col justify-between h-full max-h-[88vh]">
@@ -209,7 +209,7 @@ export default function KineticScrollText({ onOpenQuote }: KineticScrollTextProp
                 return (
                   <div
                     key={idx}
-                    className="hubtown-beveled p-5 bg-[#040E24]/85 border border-[#D5E0FF]/20 hover:border-[#7099FF]/50 transition-all duration-300 backdrop-blur-xl group hover:-translate-y-1 shadow-lg hover:shadow-[#7099FF]/15"
+                    className="hubtown-beveled p-5 bg-[#040E24]/85 border border-[#D5E0FF]/20 hover:border-[#7099FF]/50 transition-all duration-300 group hover:-translate-y-1 shadow-lg hover:shadow-[#7099FF]/15"
                   >
                     <div className="flex items-center justify-between mb-3">
                       <span className="font-mono text-[10px] uppercase text-[#7099FF] tracking-wider">
@@ -231,7 +231,7 @@ export default function KineticScrollText({ onOpenQuote }: KineticScrollTextProp
             </div>
 
             {/* Interactive Convergence CTA Bar */}
-            <div className="mt-6 hubtown-beveled p-4 sm:p-5 bg-gradient-to-r from-[#040E24]/90 via-[#061433]/90 to-[#040E24]/90 border border-[#D5E0FF]/25 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mt-6 hubtown-beveled p-4 sm:p-5 bg-gradient-to-r from-[#040E24]/90 via-[#061433]/90 to-[#040E24]/90 border border-[#D5E0FF]/25 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[#D5E0FF] text-[#020A19] flex items-center justify-center font-black text-lg shadow-lg shadow-[#7099FF]/30 flex-shrink-0">
                   SE

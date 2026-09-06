@@ -20,7 +20,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-[#010712] text-[#D5E0FF] pt-16 pb-10 sm:pt-24 sm:pb-12 relative overflow-hidden select-none border-t border-[#D5E0FF]/15">
+    <footer id="contact" className="cv-auto bg-[#010712] text-[#D5E0FF] pt-16 pb-10 sm:pt-24 sm:pb-12 relative overflow-hidden select-none border-t border-[#D5E0FF]/15">
       {/* Subtle Background Architectural Brand Mark */}
       <div className="absolute -bottom-10 right-0 pointer-events-none opacity-5 font-black text-7xl sm:text-9xl tracking-tighter text-[#D5E0FF]">
         SUCCESS

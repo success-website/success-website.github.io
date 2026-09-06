@@ -16,7 +16,15 @@ export default function FloemaCursor() {
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (typeof window === "undefined") return;
+    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isPotato =
+      typeof navigator !== "undefined" &&
+      typeof navigator.hardwareConcurrency === "number" &&
+      navigator.hardwareConcurrency <= 4;
+
+    if (isCoarse || isReduced || isPotato) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);

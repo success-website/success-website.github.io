@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -13,15 +13,24 @@ interface FeaturedBannerArrowProps {
 
 export default function FeaturedBannerArrow({ onOpenQuote }: FeaturedBannerArrowProps) {
   const bannerRef = useRef<HTMLElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const isLarge = window.innerWidth >= 1024;
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isPotato = typeof navigator !== "undefined" && typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4;
+    setIsDesktop(isLarge && !isReduced && !isPotato);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: bannerRef,
     offset: ["start end", "end start"],
   });
 
-  const plateParallaxY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const plateParallaxY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section ref={bannerRef} className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] overflow-hidden border-t border-[#D5E0FF]/10">
+    <section ref={bannerRef} className="cv-auto py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -32,7 +41,7 @@ export default function FeaturedBannerArrow({ onOpenQuote }: FeaturedBannerArrow
         >
           {/* Left Media (Photo of calibrated metal stamping & plates) */}
           <div className="relative w-full lg:w-1/2 min-h-[220px] sm:min-h-[340px] lg:min-h-[480px] overflow-hidden">
-            <motion.div style={{ y: plateParallaxY, scale: 1.15 }} className="absolute inset-0 w-full h-full">
+            <motion.div style={isDesktop ? { y: plateParallaxY, scale: 1.08 } : undefined} className="absolute inset-0 w-full h-full">
               <Image
                 src={getAssetPath("/images/Metalplates.png")}
                 alt="Success Engineering Precision Quality Metal Plates"

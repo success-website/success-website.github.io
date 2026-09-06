@@ -15,7 +15,7 @@ export default function BrandingMarquee() {
   ];
 
   return (
-    <div className="py-8 sm:py-12 bg-[#010712] text-[#D5E0FF] overflow-hidden select-none border-y border-[#D5E0FF]/15">
+    <div className="cv-auto py-8 sm:py-12 bg-[#010712] text-[#D5E0FF] overflow-hidden select-none border-y border-[#D5E0FF]/15">
       {/* Track 1 (Leftward) */}
       <div className="flex animate-hubtown-marquee mb-3 sm:mb-4 whitespace-nowrap">
         {Array.from({ length: 4 }).flatMap(() => items).map((text, i) => (

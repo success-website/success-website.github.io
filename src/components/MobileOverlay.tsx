@@ -29,7 +29,7 @@ export default function MobileOverlay({
         animate={{ opacity: 1, x: "0%" }}
         exit={{ opacity: 0, x: "100%" }}
         transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
-        className="fixed inset-0 z-50 bg-[#020A19]/98 text-[#D5E0FF] flex flex-col justify-between p-5 sm:p-10 overflow-y-auto backdrop-blur-2xl border-l border-[#D5E0FF]/15"
+        className="fixed inset-0 z-50 bg-[#020A19]/98 text-[#D5E0FF] flex flex-col justify-between p-5 sm:p-10 overflow-y-auto border-l border-[#D5E0FF]/15"
       >
         {/* Top bar with Brand & Close */}
         <div className="flex items-center justify-between pb-4 border-b border-[#D5E0FF]/15">

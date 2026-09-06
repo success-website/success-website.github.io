@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Factory, Award, MapPin, ArrowUpRight } from "lucide-react";
@@ -17,6 +17,15 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const isLarge = window.innerWidth >= 1024;
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isPotato = typeof navigator !== "undefined" && typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4;
+    setIsDesktop(isLarge && !isReduced && !isPotato);
+  }, []);
 
   const imgParallaxY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
   const highlights = [
@@ -41,9 +50,9 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
   ];
 
   return (
-    <section ref={sectionRef} id="about" className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
-      {/* Background Radial Glow */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#7099FF]/5 blur-[120px] pointer-events-none" />
+    <section ref={sectionRef} id="about" className="cv-auto py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+      {/* Background Radial Glow (zero-blur GPU gradient) */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full ambient-glow-blue pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Section Header */}
@@ -145,7 +154,7 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
               className="hubtown-beveled relative p-2 bg-[#040E24]/80 border border-[#D5E0FF]/20 group overflow-hidden"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#020A19] hubtown-beveled">
-                <motion.div style={{ y: imgParallaxY, scale: 1.15 }} className="absolute inset-0 w-full h-full">
+                <motion.div style={isDesktop ? { y: imgParallaxY, scale: 1.08 } : undefined} className="absolute inset-0 w-full h-full">
                   <Image
                     src={getAssetPath("/images/Homepage_img.jpg")}
                     alt="Success Engineering Tooling Bay"

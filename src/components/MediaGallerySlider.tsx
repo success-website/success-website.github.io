@@ -17,7 +17,7 @@ export default function MediaGallerySlider() {
   };
 
   return (
-    <section id="gallery" className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section id="gallery" className="cv-auto py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-16 gap-6">
@@ -65,7 +65,7 @@ export default function MediaGallerySlider() {
             <div
               key={idx}
               onClick={() => setSelectedImage(item)}
-              className="flex-shrink-0 w-[82vw] sm:w-[420px] lg:w-[460px] hubtown-beveled bg-[#040E24]/80 border border-[#D5E0FF]/15 p-3.5 sm:p-4 cursor-pointer hover:border-[#7099FF]/50 hover:shadow-2xl hover:shadow-[#7099FF]/15 transition-all duration-500 snap-start group backdrop-blur-md"
+              className="flex-shrink-0 w-[82vw] sm:w-[420px] lg:w-[460px] hubtown-beveled bg-[#040E24]/85 border border-[#D5E0FF]/15 p-3.5 sm:p-4 cursor-pointer hover:border-[#7099FF]/50 hover:shadow-2xl hover:shadow-[#7099FF]/15 transition-all duration-500 snap-start group"
             >
               <div className="relative aspect-[16/11] w-full hubtown-beveled overflow-hidden bg-[#020A19] border border-[#D5E0FF]/10">
                 <Image

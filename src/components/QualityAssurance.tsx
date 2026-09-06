@@ -33,7 +33,7 @@ export default function QualityAssurance() {
   ];
 
   return (
-    <section id="quality" className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section id="quality" className="cv-auto py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Section Header */}
         <motion.div

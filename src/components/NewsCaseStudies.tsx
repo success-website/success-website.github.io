@@ -10,7 +10,7 @@ export default function NewsCaseStudies() {
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
 
   return (
-    <section id="news" className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section id="news" className="cv-auto py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <motion.div

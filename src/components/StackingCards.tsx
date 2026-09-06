@@ -12,7 +12,12 @@ export default function StackingCards({ onOpenQuote }: StackingCardsProps) {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    const check = () => {
+      const isLarge = window.innerWidth >= 1024;
+      const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const isPotato = typeof navigator !== "undefined" && typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4;
+      setIsDesktop(isLarge && !isReduced && !isPotato);
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -26,7 +31,7 @@ export default function StackingCards({ onOpenQuote }: StackingCardsProps) {
   ];
 
   return (
-    <section className="py-16 sm:py-28 bg-[#040E24] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section className="cv-auto py-16 sm:py-28 bg-[#040E24] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-16">
@@ -52,7 +57,7 @@ export default function StackingCards({ onOpenQuote }: StackingCardsProps) {
             <div
               key={card.id}
               style={isDesktop ? { top: `${100 + idx * 30}px` } : undefined}
-              className={`relative lg:sticky hubtown-beveled p-5 sm:p-10 lg:p-12 text-[#D5E0FF] ${cardColors[idx % cardColors.length]} shadow-2xl border border-[#D5E0FF]/20 transition-transform duration-500 backdrop-blur-xl`}
+              className={`relative lg:sticky hubtown-beveled p-5 sm:p-10 lg:p-12 text-[#D5E0FF] ${cardColors[idx % cardColors.length]} shadow-2xl border border-[#D5E0FF]/20 transition-all duration-300`}
             >
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 sm:gap-8">
                 <div className="max-w-2xl">
