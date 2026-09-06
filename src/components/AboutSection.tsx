@@ -41,55 +41,67 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
   ];
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 sm:py-32 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section ref={sectionRef} id="about" className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       {/* Background Radial Glow */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#7099FF]/5 blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="hubtown-tag">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mb-10 sm:mb-16"
+        >
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-4">
+            <span className="hubtown-tag text-[10px] sm:text-xs">
               [ 01 // ENTERPRISE PROFILE ]
             </span>
-            <span className="font-mono text-[11px] text-[#7099FF] tracking-wider">
+            <span className="font-mono text-[10px] sm:text-[11px] text-[#7099FF] tracking-wider">
               LAT 13.1438° N / LONG 79.9082° E
             </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
             Engineering Excellence Built on Two Decades of Precision.
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#D5E0FF]/70 font-normal leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-sm sm:text-base lg:text-lg text-[#D5E0FF]/70 font-normal leading-relaxed">
             Headquartered in SIDCO Industrial Estate, Kakkalur, Success Engineering Enterprises is an ISO 9001:2015 certified manufacturer specializing in precision press tools, high-tonnage sheet metal stamping, and turnkey welded sub-assemblies.
           </p>
-        </div>
+        </motion.div>
 
         {/* 2-Column Split: Highlight Cards & Facility Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           {/* Left Column: Feature Highlights */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-6 space-y-4 sm:space-y-6"
+          >
+            <div className="space-y-3 sm:space-y-4">
               {highlights.map((item, idx) => {
                 const IconComponent = item.icon;
                 return (
                   <div
                     key={idx}
-                    className="hubtown-beveled p-6 bg-[#040E24]/60 backdrop-blur-md border border-[#D5E0FF]/15 hover:border-[#7099FF]/40 hover:bg-[#081636]/80 transition-all duration-300 group"
+                    className="hubtown-beveled p-4 sm:p-6 bg-[#040E24]/85 border border-[#D5E0FF]/15 hover:border-[#7099FF]/40 hover:bg-[#081636]/80 transition-all duration-300 group"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-[#7099FF]/15 border border-[#7099FF]/30 text-[#7099FF] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <IconComponent className="w-5 h-5" />
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#7099FF]/15 border border-[#7099FF]/30 text-[#7099FF] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                        <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <span className="font-mono text-[10px] uppercase tracking-wider text-[#7099FF]">
+                          <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#7099FF]">
                             {item.code}
                           </span>
                         </div>
-                        <h3 className="mt-1 text-base font-bold uppercase tracking-tight text-[#D5E0FF]">
+                        <h3 className="mt-1 text-sm sm:text-base font-bold uppercase tracking-tight text-[#D5E0FF]">
                           {item.title}
                         </h3>
-                        <p className="mt-1.5 text-xs sm:text-sm text-[#D5E0FF]/65 leading-relaxed">
+                        <p className="mt-1 text-xs sm:text-sm text-[#D5E0FF]/65 leading-relaxed">
                           {item.desc}
                         </p>
                       </div>
@@ -99,11 +111,11 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
               })}
             </div>
 
-            <div className="pt-4 flex flex-wrap items-center gap-4">
+            <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <button
                 onClick={onOpenQuote}
                 data-cursor="AUDIT"
-                className="hubtown-btn-solid text-xs py-3.5 px-6 shadow-lg shadow-[#7099FF]/20"
+                className="hubtown-btn-solid text-xs py-3 sm:py-3.5 px-6 shadow-lg shadow-[#7099FF]/20 justify-center"
               >
                 <span>Schedule a Plant Audit</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -113,15 +125,21 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
                 href={COMPANY_INFO.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hubtown-btn-glass text-xs py-3.5 px-5"
+                className="hubtown-btn-glass text-xs py-3 sm:py-3.5 px-5 justify-center text-center"
               >
                 <span>Open Google Maps</span>
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Key Photo with HUD markings */}
-          <div className="lg:col-span-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-6"
+          >
             <div
               data-cursor="FACILITY"
               className="hubtown-beveled relative p-2 bg-[#040E24]/80 border border-[#D5E0FF]/20 group overflow-hidden"
@@ -163,7 +181,7 @@ export default function AboutSection({ onOpenQuote }: AboutSectionProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -17,10 +17,10 @@ export default function MediaGallerySlider() {
   };
 
   return (
-    <section id="gallery" className="py-24 sm:py-32 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section id="gallery" className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-16 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="hubtown-tag">
@@ -30,26 +30,26 @@ export default function MediaGallerySlider() {
                 INTERACTIVE GALLERY
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
               Inside Our SIDCO Kakkalur Facility.
             </h2>
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full border border-[#D5E0FF]/20 hover:border-[#7099FF] bg-[#040E24] hover:bg-[#081636] flex items-center justify-center text-[#D5E0FF] transition-all hover:scale-105"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D5E0FF]/20 hover:border-[#7099FF] bg-[#040E24] hover:bg-[#081636] flex items-center justify-center text-[#D5E0FF] transition-all hover:scale-105"
               aria-label="Scroll left"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full border border-[#D5E0FF]/20 hover:border-[#7099FF] bg-[#040E24] hover:bg-[#081636] flex items-center justify-center text-[#D5E0FF] transition-all hover:scale-105"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#D5E0FF]/20 hover:border-[#7099FF] bg-[#040E24] hover:bg-[#081636] flex items-center justify-center text-[#D5E0FF] transition-all hover:scale-105"
               aria-label="Scroll right"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
@@ -58,14 +58,14 @@ export default function MediaGallerySlider() {
         <div
           ref={sliderRef}
           data-cursor="DRAG"
-          className="flex gap-6 overflow-x-auto scrollbar-none pb-6 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+          className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none pb-4 sm:pb-6 snap-x snap-mandatory cursor-grab active:cursor-grabbing -mx-4 px-4 sm:mx-0 sm:px-0"
           style={{ scrollbarWidth: "none" }}
         >
           {GALLERY_IMAGES.map((item, idx) => (
             <div
               key={idx}
               onClick={() => setSelectedImage(item)}
-              className="flex-shrink-0 w-[300px] sm:w-[420px] lg:w-[460px] hubtown-beveled bg-[#040E24]/80 border border-[#D5E0FF]/15 p-4 cursor-pointer hover:border-[#7099FF]/50 hover:shadow-2xl hover:shadow-[#7099FF]/15 transition-all duration-500 snap-start group backdrop-blur-md"
+              className="flex-shrink-0 w-[82vw] sm:w-[420px] lg:w-[460px] hubtown-beveled bg-[#040E24]/80 border border-[#D5E0FF]/15 p-3.5 sm:p-4 cursor-pointer hover:border-[#7099FF]/50 hover:shadow-2xl hover:shadow-[#7099FF]/15 transition-all duration-500 snap-start group backdrop-blur-md"
             >
               <div className="relative aspect-[16/11] w-full hubtown-beveled overflow-hidden bg-[#020A19] border border-[#D5E0FF]/10">
                 <Image

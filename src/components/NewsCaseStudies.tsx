@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import { NEWS_DATA, NewsItem } from "@/data/websiteData";
 
@@ -9,34 +10,44 @@ export default function NewsCaseStudies() {
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
 
   return (
-    <section id="news" className="py-24 sm:py-32 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section id="news" className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mb-10 sm:mb-16"
+        >
           <div className="flex items-center gap-3 mb-4">
-            <span className="hubtown-tag">
+            <span className="hubtown-tag text-[10px] sm:text-xs">
               [ 07 // TECHNICAL BULLETINS ]
             </span>
-            <span className="font-mono text-[11px] text-[#7099FF]">
+            <span className="font-mono text-[10px] sm:text-[11px] text-[#7099FF]">
               INDUSTRY UPDATES
             </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
             Latest Infrastructure & Technical Insights.
           </h2>
-        </div>
+        </motion.div>
 
         {/* News Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {NEWS_DATA.map((item) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
+          {NEWS_DATA.map((item, idx) => (
+            <motion.div
               key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
               data-cursor="READ"
               onClick={() => setSelectedNews(item)}
-              className="hubtown-beveled bg-[#040E24]/80 border border-[#D5E0FF]/15 hover:border-[#7099FF]/50 p-6 cursor-pointer flex flex-col justify-between group hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#7099FF]/10 transition-all duration-500 backdrop-blur-md"
+              className="hubtown-beveled bg-[#040E24]/85 border border-[#D5E0FF]/15 hover:border-[#7099FF]/50 p-4 sm:p-6 cursor-pointer flex flex-col justify-between group hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-[#7099FF]/10 transition-all duration-500"
             >
               <div>
-                <div className="relative aspect-[16/10] hubtown-beveled overflow-hidden mb-6 bg-[#020A19] border border-[#D5E0FF]/10">
+                <div className="relative aspect-[16/10] hubtown-beveled overflow-hidden mb-4 sm:mb-6 bg-[#020A19] border border-[#D5E0FF]/10">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -74,7 +85,7 @@ export default function NewsCaseStudies() {
                   <ArrowUpRight className="w-4 h-4" />
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

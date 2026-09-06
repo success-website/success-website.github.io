@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Award, FileCheck2, X } from "lucide-react";
 import { getAssetPath } from "@/lib/basePath";
 
@@ -32,30 +33,36 @@ export default function QualityAssurance() {
   ];
 
   return (
-    <section id="quality" className="py-24 sm:py-32 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
+    <section id="quality" className="py-16 sm:py-28 bg-[#020A19] text-[#D5E0FF] relative overflow-hidden border-t border-[#D5E0FF]/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-end mb-10 sm:mb-16"
+        >
           <div className="lg:col-span-8">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="hubtown-tag">
+            <div className="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+              <span className="hubtown-tag text-[10px] sm:text-xs">
                 [ 05 // QUALITY & METROLOGY ]
               </span>
-              <span className="font-mono text-[11px] text-[#7099FF]">
+              <span className="font-mono text-[10px] sm:text-[11px] text-[#7099FF]">
                 ZERO-DEFECT STANDARD
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#D5E0FF] leading-tight">
               ISO 9001:2015 Certified Manufacturing.
             </h2>
-            <p className="mt-4 text-base text-[#D5E0FF]/70 max-w-2xl leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#D5E0FF]/70 max-w-2xl leading-relaxed">
               Certified by UCAS India Pvt. Ltd. Our quality management systems govern every stage from toolroom design to stamping and final crating.
             </p>
           </div>
 
           <div className="lg:col-span-4 flex lg:justify-end">
-            <div className="hubtown-beveled p-4 bg-[#040E24]/80 border border-[#D5E0FF]/20 flex items-center gap-4 backdrop-blur-md">
-              <div className="relative w-16 h-16 p-2 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+            <div className="hubtown-beveled p-3.5 sm:p-4 bg-[#040E24]/85 border border-[#D5E0FF]/20 flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
+              <div className="relative w-12 h-12 sm:w-16 sm:h-16 p-1.5 sm:p-2 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
                 <Image
                   src={getAssetPath("/images/ISO_LOGO.png")}
                   alt="ISO 9001:2015 Logo"
@@ -68,18 +75,24 @@ export default function QualityAssurance() {
                 <div className="text-xs font-mono font-bold uppercase text-[#D5E0FF]">
                   UCAS India Certified
                 </div>
-                <div className="text-[11px] font-mono text-[#7099FF] mt-0.5">
+                <div className="text-[10px] sm:text-[11px] font-mono text-[#7099FF] mt-0.5">
                   Reg No: 12-UCAS-IND-092
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Quality Split Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Media */}
-          <div className="lg:col-span-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-6"
+          >
             <div
               data-cursor="INSPECT"
               className="hubtown-beveled overflow-hidden group p-2 bg-[#040E24]/80 border border-[#D5E0FF]/20"
@@ -104,14 +117,20 @@ export default function QualityAssurance() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Protocol Cards */}
-          <div className="lg:col-span-6 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-6 space-y-4"
+          >
             {qualityStandards.map((std, idx) => (
               <div
                 key={idx}
-                className="hubtown-beveled p-5 bg-[#040E24]/60 border border-[#D5E0FF]/15 hover:border-[#7099FF]/40 transition-all duration-300 backdrop-blur-md"
+                className="hubtown-beveled p-5 bg-[#040E24]/85 border border-[#D5E0FF]/15 hover:border-[#7099FF]/40 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <span className="w-7 h-7 rounded-lg bg-[#7099FF]/15 border border-[#7099FF]/30 text-[#7099FF] flex items-center justify-center font-mono text-xs font-bold flex-shrink-0 mt-0.5">
@@ -136,13 +155,13 @@ export default function QualityAssurance() {
               <button
                 onClick={() => setIsCertModalOpen(true)}
                 data-cursor="CERTIFICATE"
-                className="hubtown-btn-solid text-xs py-3.5 px-6 shadow-xl shadow-[#7099FF]/20"
+                className="hubtown-btn-solid text-xs py-3 sm:py-3.5 px-5 sm:px-6 shadow-xl shadow-[#7099FF]/20 w-full sm:w-auto justify-center"
               >
                 <FileCheck2 className="w-4 h-4" />
                 <span>View ISO 9001:2015 Certificate Dossier</span>
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Certificate Dossier Modal */}

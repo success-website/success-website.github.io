@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -13,13 +13,21 @@ interface BannerPreloaderProps {
 
 export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
   const heroRef = useRef<HTMLElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  // Parallax Layer Transforms
+  // Parallax Layer Transforms (active on desktop)
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const yTitle = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const yCard1 = useTransform(scrollYProgress, [0, 1], [0, 60]);
@@ -30,7 +38,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
     <section
       ref={heroRef}
       id="home"
-      className="relative min-h-screen bg-[#020A19] text-[#D5E0FF] overflow-hidden pt-28 sm:pt-36 pb-16 flex flex-col justify-between"
+      className="relative min-h-screen bg-[#020A19] text-[#D5E0FF] overflow-hidden pt-24 sm:pt-36 pb-12 sm:pb-16 flex flex-col justify-between"
     >
       {/* Cinematic Ambient Glows & Grid Mesh with Parallax */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 pointer-events-none">
@@ -70,7 +78,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.2, 0, 0, 1] }}
-            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight text-white font-['Space_Grotesk'] leading-[0.95]"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight text-white font-['Space_Grotesk'] leading-[1.05] sm:leading-[0.95]"
           >
             Engineered for <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D5E0FF] via-white to-[#7099FF]">
@@ -83,7 +91,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.2, 0, 0, 1] }}
-            className="mt-6 sm:mt-8 text-base sm:text-lg text-[#D5E0FF]/70 font-normal leading-relaxed max-w-2xl"
+            className="mt-4 sm:mt-8 text-sm sm:text-base lg:text-lg text-[#D5E0FF]/70 font-normal leading-relaxed max-w-2xl"
           >
             Two decades of specialized press tool engineering, 250-ton progressive hydraulic stamping, certified structural robotic welding, and turnkey sub-assembly for global tier-1 automotive, elevator, and infrastructure OEMs.
           </motion.p>
@@ -93,12 +101,12 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45, ease: [0.2, 0, 0, 1] }}
-            className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
+            className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4"
           >
             <button
               onClick={onOpenQuote}
               data-cursor="RFQ"
-              className="hubtown-btn-solid text-sm py-3.5 px-8 group"
+              className="hubtown-btn-solid text-xs sm:text-sm py-3 sm:py-3.5 px-6 sm:px-8 group justify-center"
             >
               <span>Initiate Manufacturing RFQ</span>
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
@@ -107,7 +115,7 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
             <Link
               href="#services"
               data-cursor="EXPLORE"
-              className="hubtown-btn-glass text-sm py-3.5 px-7"
+              className="hubtown-btn-glass text-xs sm:text-sm py-3 sm:py-3.5 px-6 sm:px-7 justify-center text-center"
             >
               <span>Explore 5 Production Bays</span>
             </Link>
@@ -119,13 +127,13 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.2, 0, 0, 1] }}
-          className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
         >
           {/* Card 1: 250T Press Line (Parallax Speed 1) */}
           <motion.div
-            style={{ y: yCard1 }}
+            style={isDesktop ? { y: yCard1 } : undefined}
             data-cursor="STAMPING"
-            className="hubtown-beveled p-5 group cursor-pointer"
+            className="hubtown-beveled p-4 sm:p-5 group cursor-pointer"
           >
             <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-[#040E24] border border-[#D5E0FF]/15">
               <Image
@@ -155,9 +163,9 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
 
           {/* Card 2: Precision Toolroom (Parallax Speed 2 - Counter/Ascending) */}
           <motion.div
-            style={{ y: yCard2 }}
+            style={isDesktop ? { y: yCard2 } : undefined}
             data-cursor="TOOLROOM"
-            className="hubtown-beveled p-5 group cursor-pointer"
+            className="hubtown-beveled p-4 sm:p-5 group cursor-pointer"
           >
             <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-[#040E24] border border-[#D5E0FF]/15">
               <Image
@@ -187,9 +195,9 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
 
           {/* Card 3: Robotic Welding (Parallax Speed 3) */}
           <motion.div
-            style={{ y: yCard3 }}
+            style={isDesktop ? { y: yCard3 } : undefined}
             data-cursor="WELDING"
-            className="hubtown-beveled p-5 group cursor-pointer sm:col-span-2 lg:col-span-1"
+            className="hubtown-beveled p-4 sm:p-5 group cursor-pointer sm:col-span-2 lg:col-span-1"
           >
             <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-[#040E24] border border-[#D5E0FF]/15">
               <Image
@@ -220,37 +228,37 @@ export default function BannerPreloader({ onOpenQuote }: BannerPreloaderProps) {
       </div>
 
       {/* Hubtown Monospace Metrics Telemetry Strip */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 mt-16 pt-8 border-t border-[#D5E0FF]/10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 font-mono">
-          <div>
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-[#D5E0FF]/10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8 font-mono">
+          <div className="p-3 sm:p-0 rounded-xl bg-[#040E24]/50 sm:bg-transparent border border-[#D5E0FF]/10 sm:border-0">
+            <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white">
               20<span className="text-[#7099FF]">+</span>
             </div>
-            <div className="text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
+            <div className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
               Years in Operation
             </div>
           </div>
-          <div>
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <div className="p-3 sm:p-0 rounded-xl bg-[#040E24]/50 sm:bg-transparent border border-[#D5E0FF]/10 sm:border-0">
+            <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white">
               250<span className="text-[#7099FF]">T</span>
             </div>
-            <div className="text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
+            <div className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
               Stamping Press Capacity
             </div>
           </div>
-          <div>
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <div className="p-3 sm:p-0 rounded-xl bg-[#040E24]/50 sm:bg-transparent border border-[#D5E0FF]/10 sm:border-0">
+            <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white">
               0.01<span className="text-[#7099FF]">MM</span>
             </div>
-            <div className="text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
+            <div className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
               Micron Tolerance Standard
             </div>
           </div>
-          <div>
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <div className="p-3 sm:p-0 rounded-xl bg-[#040E24]/50 sm:bg-transparent border border-[#D5E0FF]/10 sm:border-0">
+            <div className="text-2xl sm:text-4xl font-bold tracking-tight text-white">
               5<span className="text-[#7099FF]">BAYS</span>
             </div>
-            <div className="text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
+            <div className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#D5E0FF]/60 mt-1">
               Integrated Production Cells
             </div>
           </div>

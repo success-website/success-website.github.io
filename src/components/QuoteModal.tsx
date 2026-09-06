@@ -50,23 +50,23 @@ export default function QuoteModal({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl bg-[#040E24] rounded-3xl shadow-2xl overflow-hidden border border-[#D5E0FF]/25 p-6 sm:p-10 text-[#D5E0FF] animate-in zoom-in-95 duration-200 max-h-[95vh] overflow-y-auto"
+        className="relative w-full max-w-2xl bg-[#040E24] rounded-3xl shadow-2xl overflow-hidden border border-[#D5E0FF]/25 p-5 sm:p-8 text-[#D5E0FF] animate-in zoom-in-95 duration-200 max-h-[90dvh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-full hover:bg-[#081636] text-[#D5E0FF]/60 hover:text-white transition-colors"
+          className="absolute top-5 right-5 sm:top-6 sm:right-6 p-2 rounded-full hover:bg-[#081636] text-[#D5E0FF]/60 hover:text-white transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         {!isSubmitted ? (
           <div>
-            <div className="mb-6">
-              <span className="hubtown-tag text-xs mb-2">
+            <div className="mb-5 sm:mb-6 pr-8">
+              <span className="hubtown-tag text-[10px] sm:text-xs mb-2">
                 [ RFQs & ENGINEERING QUOTES ]
               </span>
-              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#D5E0FF] mt-2">
+              <h3 className="text-xl sm:text-3xl font-black uppercase tracking-tight text-[#D5E0FF] mt-1.5 sm:mt-2">
                 Request a Custom Quote
               </h3>
               <p className="text-xs sm:text-sm text-[#D5E0FF]/70 mt-1">
@@ -74,7 +74,7 @@ export default function QuoteModal({
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
               {/* Service Selection */}
               <div>
                 <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7099FF] mb-1.5">
@@ -83,7 +83,7 @@ export default function QuoteModal({
                 <select
                   value={service}
                   onChange={(e) => setService(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-sm font-semibold text-[#D5E0FF] focus:border-[#7099FF] focus:outline-none"
+                  className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-base sm:text-sm font-semibold text-[#D5E0FF] focus:border-[#7099FF] focus:outline-none"
                 >
                   {SERVICES_DATA.map((s) => (
                     <option key={s.id} value={s.title} className="bg-[#040E24] text-white">
@@ -97,7 +97,7 @@ export default function QuoteModal({
               </div>
 
               {/* Name & Company */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7099FF] mb-1.5">
                     Your Name *
@@ -108,7 +108,7 @@ export default function QuoteModal({
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. John Doe"
-                    className="w-full px-4 py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-base sm:text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none"
                   />
                 </div>
                 <div>
@@ -121,13 +121,13 @@ export default function QuoteModal({
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                     placeholder="e.g. Tier-1 Automotive OEM"
-                    className="w-full px-4 py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-base sm:text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none"
                   />
                 </div>
               </div>
 
               {/* Email & Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#7099FF] mb-1.5">
                     Business Email *
@@ -138,7 +138,7 @@ export default function QuoteModal({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="john@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-base sm:text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none"
                   />
                 </div>
                 <div>
@@ -151,7 +151,7 @@ export default function QuoteModal({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 98765 43210"
-                    className="w-full px-4 py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-base sm:text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none"
                   />
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function QuoteModal({
                 <select
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-sm font-semibold text-[#D5E0FF] focus:border-[#7099FF] focus:outline-none"
+                  className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-base sm:text-sm font-semibold text-[#D5E0FF] focus:border-[#7099FF] focus:outline-none"
                 >
                   <option value="Prototype / Sample Testing (1 - 50 pcs)" className="bg-[#040E24] text-white">Prototype / Sample Testing (1 - 50 pcs)</option>
                   <option value="Pilot Batch (50 - 500 pcs)" className="bg-[#040E24] text-white">Pilot Batch (50 - 500 pcs)</option>
@@ -183,7 +183,7 @@ export default function QuoteModal({
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Share details on sheet thickness, material grade (CRCA/SS304), stamping tonnage, or delivery timelines..."
-                  className="w-full px-4 py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none resize-none"
+                  className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-[#020A19] border border-[#D5E0FF]/20 text-base sm:text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/30 focus:border-[#7099FF] focus:outline-none resize-none"
                 />
               </div>
 

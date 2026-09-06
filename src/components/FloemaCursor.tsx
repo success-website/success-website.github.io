@@ -63,20 +63,16 @@ export default function FloemaCursor() {
     >
       <motion.div
         animate={{
-          scale: isHovered ? 1 : 0.5,
+          scale: isHovered ? 1 : 0.8,
           backgroundColor: isHovered ? "rgba(213, 224, 255, 0.95)" : "#D5E0FF",
-          color: "#020A19",
-          paddingLeft: isHovered ? 16 : 5,
-          paddingRight: isHovered ? 16 : 5,
-          paddingTop: isHovered ? 8 : 5,
-          paddingBottom: isHovered ? 8 : 5,
-          borderRadius: isHovered ? 9999 : 9999,
           boxShadow: isHovered
-            ? "0 0 35px rgba(213, 224, 255, 0.6), 0 0 60px rgba(112, 153, 255, 0.4)"
-            : "0 0 15px rgba(213, 224, 255, 0.8)",
+            ? "0 0 30px rgba(213, 224, 255, 0.6), 0 0 50px rgba(112, 153, 255, 0.4)"
+            : "0 0 12px rgba(213, 224, 255, 0.8)",
         }}
-        transition={{ type: "spring", damping: 20, stiffness: 300 }}
-        className="flex items-center justify-center font-mono text-[10px] font-bold uppercase tracking-wider select-none backdrop-blur-md"
+        transition={{ type: "spring", damping: 22, stiffness: 320 }}
+        className={`flex items-center justify-center font-mono text-[10px] font-bold uppercase tracking-wider select-none rounded-full text-[#020A19] ${
+          isHovered ? "px-3.5 py-1.5" : "w-2.5 h-2.5"
+        }`}
       >
         {isHovered && <span>{cursorText}</span>}
       </motion.div>

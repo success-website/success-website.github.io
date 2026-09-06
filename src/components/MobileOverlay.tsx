@@ -2,20 +2,20 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Search, ChevronRight, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { X, ChevronRight, ArrowUpRight } from "lucide-react";
 import { SERVICES_DATA } from "@/data/websiteData";
+import { getAssetPath } from "@/lib/basePath";
 
 interface MobileOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenSearch: () => void;
   onOpenQuote: () => void;
 }
 
 export default function MobileOverlay({
   isOpen,
   onClose,
-  onOpenSearch,
   onOpenQuote,
 }: MobileOverlayProps) {
   const [isServicesExpanded, setIsServicesExpanded] = useState(false);
@@ -28,37 +28,42 @@ export default function MobileOverlay({
         initial={{ opacity: 0, x: "100%" }}
         animate={{ opacity: 1, x: "0%" }}
         exit={{ opacity: 0, x: "100%" }}
-        transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
-        className="fixed inset-0 z-50 bg-[#020A19]/98 text-[#D5E0FF] flex flex-col justify-between p-6 sm:p-10 overflow-y-auto backdrop-blur-2xl border-l border-[#D5E0FF]/15"
+        transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
+        className="fixed inset-0 z-50 bg-[#020A19]/98 text-[#D5E0FF] flex flex-col justify-between p-5 sm:p-10 overflow-y-auto backdrop-blur-2xl border-l border-[#D5E0FF]/15"
       >
-        {/* Top bar with Search & Close */}
-        <div className="flex items-center justify-between pb-6 border-b border-[#D5E0FF]/15">
-          <button
-            onClick={() => {
-              onClose();
-              onOpenSearch();
-            }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#040E24] text-xs font-mono font-bold uppercase tracking-wider text-[#7099FF] border border-[#D5E0FF]/20 hover:border-[#7099FF] transition-colors"
-          >
-            <Search className="w-3.5 h-3.5" />
-            <span>Search Index</span>
-          </button>
+        {/* Top bar with Brand & Close */}
+        <div className="flex items-center justify-between pb-4 border-b border-[#D5E0FF]/15">
+          <div className="flex items-center gap-2.5">
+            <div className="relative w-8 h-8 rounded-xl bg-white p-1 border border-[#D5E0FF]/30 flex items-center justify-center overflow-hidden">
+              <Image
+                src={getAssetPath("/images/logo.png")}
+                alt="Success Engineering Logo"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
+            </div>
+            <span className="text-sm font-bold uppercase tracking-tight text-white font-['Space_Grotesk']">
+              Success Engineering
+            </span>
+          </div>
 
           <button
             onClick={onClose}
-            className="p-2.5 rounded-full bg-[#040E24] hover:bg-[#081636] border border-[#D5E0FF]/20 text-[#D5E0FF] transition-colors"
+            className="p-2 rounded-full bg-[#040E24] hover:bg-[#081636] border border-[#D5E0FF]/20 text-[#D5E0FF] transition-colors"
+            aria-label="Close menu"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Navigation list */}
-        <div className="py-8 space-y-5 my-auto">
+        <div className="py-6 space-y-3.5 my-auto">
           <div>
             <a
               href="#home"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
+              className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               01 • Home
             </a>
@@ -68,7 +73,7 @@ export default function MobileOverlay({
             <a
               href="#about"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
+              className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               02 • Enterprise
             </a>
@@ -77,11 +82,11 @@ export default function MobileOverlay({
           <div>
             <button
               onClick={() => setIsServicesExpanded(!isServicesExpanded)}
-              className="w-full flex items-center justify-between text-3xl sm:text-4xl font-black uppercase tracking-tight hover:text-[#7099FF] transition-colors"
+              className="w-full flex items-center justify-between text-2xl sm:text-3xl font-extrabold uppercase tracking-tight hover:text-[#7099FF] transition-colors"
             >
               <span>03 • Capabilities</span>
               <ChevronRight
-                className={`w-6 h-6 transition-transform duration-300 ${
+                className={`w-5 h-5 transition-transform duration-300 ${
                   isServicesExpanded ? "rotate-90 text-[#7099FF]" : ""
                 }`}
               />
@@ -92,14 +97,14 @@ export default function MobileOverlay({
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mt-4 pl-4 border-l-2 border-[#7099FF] space-y-2.5"
+                className="mt-3 pl-4 border-l-2 border-[#7099FF] space-y-2"
               >
                 {SERVICES_DATA.map((s) => (
                   <a
                     key={s.id}
                     href={`#service-${s.id}`}
                     onClick={onClose}
-                    className="flex items-center justify-between py-1 text-sm font-mono text-[#D5E0FF]/70 hover:text-[#7099FF]"
+                    className="flex items-center justify-between py-1 text-xs sm:text-sm font-mono text-[#D5E0FF]/70 hover:text-[#7099FF]"
                   >
                     <span>{s.title}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
@@ -113,7 +118,7 @@ export default function MobileOverlay({
             <a
               href="#gallery"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
+              className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               04 • Facility Tour
             </a>
@@ -123,7 +128,7 @@ export default function MobileOverlay({
             <a
               href="#quality"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
+              className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               05 • Quality & ISO
             </a>
@@ -133,7 +138,7 @@ export default function MobileOverlay({
             <a
               href="#clients"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
+              className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               06 • OEM Partners
             </a>
@@ -143,7 +148,7 @@ export default function MobileOverlay({
             <a
               href="#contact"
               onClick={onClose}
-              className="text-3xl sm:text-4xl font-black uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
+              className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight block hover:text-[#7099FF] transition-colors"
             >
               07 • Contact
             </a>

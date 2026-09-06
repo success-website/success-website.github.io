@@ -15,30 +15,30 @@ export default function BrandingMarquee() {
   ];
 
   return (
-    <div className="py-12 bg-[#010712] text-[#D5E0FF] overflow-hidden select-none border-y border-[#D5E0FF]/15">
+    <div className="py-8 sm:py-12 bg-[#010712] text-[#D5E0FF] overflow-hidden select-none border-y border-[#D5E0FF]/15">
       {/* Track 1 (Leftward) */}
-      <div className="flex animate-floema-marquee mb-4 whitespace-nowrap">
+      <div className="flex animate-hubtown-marquee mb-3 sm:mb-4 whitespace-nowrap">
         {Array.from({ length: 4 }).flatMap(() => items).map((text, i) => (
-          <div key={i} className="flex items-center gap-6 mx-4">
-            <span className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#D5E0FF]">
+          <div key={i} className="flex items-center gap-3 sm:gap-6 mx-3 sm:mx-4">
+            <span className="text-xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#D5E0FF]">
               {text}
             </span>
-            <span className="w-2 h-2 rounded-full bg-[#7099FF] shadow-[0_0_8px_#7099FF]" />
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#7099FF] shadow-[0_0_8px_#7099FF]" />
           </div>
         ))}
       </div>
 
       {/* Track 2 (Rightward with outlined typography) */}
-      <div className="flex animate-floema-marquee-reverse whitespace-nowrap">
+      <div className="flex animate-hubtown-marquee-reverse whitespace-nowrap">
         {Array.from({ length: 4 }).flatMap(() => items).map((text, i) => (
-          <div key={i} className="flex items-center gap-6 mx-4">
+          <div key={i} className="flex items-center gap-3 sm:gap-6 mx-3 sm:mx-4">
             <span
-              className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-transparent"
+              className="text-xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-transparent"
               style={{ WebkitTextStroke: "1px rgba(112, 153, 255, 0.45)" }}
             >
               {text}
             </span>
-            <span className="w-2 h-2 rounded-full border border-[#7099FF]/40" />
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full border border-[#7099FF]/40" />
           </div>
         ))}
       </div>

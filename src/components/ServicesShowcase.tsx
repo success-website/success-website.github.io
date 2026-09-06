@@ -29,10 +29,106 @@ export default function ServicesShowcase({ onOpenQuoteWithService }: ServicesSho
     <section
       ref={containerRef}
       id="services"
-      className="relative h-[380vh] bg-[#020A19] text-[#D5E0FF]"
+      className="relative lg:h-[380vh] bg-[#020A19] text-[#D5E0FF] py-16 sm:py-24 lg:py-0 border-t border-[#D5E0FF]/10"
     >
-      {/* Sticky Fullscreen Viewport Window (Hubtown Pinned Scroll) */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between py-6 sm:py-8 z-20">
+      {/* Mobile View (< lg): Fluid Horizontal Touch Carousel */}
+      <div className="lg:hidden container mx-auto px-4 sm:px-6">
+        <div className="max-w-2xl mb-8">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="hubtown-tag flex items-center gap-2 text-[10px]">
+              <Radio className="w-3 h-3 text-[#38BDF8] animate-pulse" />
+              <span>02 // CAPABILITIES & BAYS</span>
+            </span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white font-['Space_Grotesk'] leading-tight">
+            Five Production Bays Under One Roof.
+          </h2>
+          <p className="mt-3 text-xs sm:text-sm text-[#D5E0FF]/70 leading-relaxed">
+            Our SIDCO Kakkalur complex integrates progressive tool design, 250T stamping, certified robotic welding, and turnkey sub-assembly.
+          </p>
+
+          {/* Quick Metrics */}
+          <div className="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-[#D5E0FF]/15 font-mono">
+            <div className="p-2.5 rounded-lg bg-[#040E24]/80 border border-[#D5E0FF]/10">
+              <span className="text-[#7099FF] block font-bold text-base">250T</span>
+              <span className="text-[#D5E0FF]/60 text-[9px] uppercase">Press Capacity</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-[#040E24]/80 border border-[#D5E0FF]/10">
+              <span className="text-[#7099FF] block font-bold text-base">0.01 mm</span>
+              <span className="text-[#D5E0FF]/60 text-[9px] uppercase">Tolerance Standard</span>
+            </div>
+          </div>
+
+          <div className="mt-4 text-[11px] font-mono text-[#7099FF] flex items-center gap-2">
+            <span>Swipe bays horizontally →</span>
+          </div>
+        </div>
+
+        {/* Swipeable Bays Container */}
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 -mx-4 px-4">
+          {SERVICES_DATA.map((service) => (
+            <div
+              key={service.id}
+              onClick={() => setSelectedService(service)}
+              className="w-[82vw] max-w-[340px] flex-shrink-0 snap-center hubtown-beveled p-4 bg-[#040E24]/90 border border-[#D5E0FF]/20 flex flex-col justify-between cursor-pointer"
+            >
+              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-[#020A19] border border-[#D5E0FF]/15 mb-3">
+                <Image
+                  src={service.defaultImg}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="82vw"
+                />
+                <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
+                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#020A19]/90 border border-[#D5E0FF]/20 text-[#D5E0FF]">
+                    BAY {service.number}
+                  </span>
+                  <span className="hubtown-tag text-[9px]">
+                    {service.tag}
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7099FF]">
+                    {service.category}
+                  </span>
+                  <span className="text-[10px] font-mono text-[#D5E0FF]/60">
+                    {service.hallOrBay}
+                  </span>
+                </div>
+                <h3 className="text-base font-bold uppercase tracking-tight text-white font-['Space_Grotesk'] mt-1">
+                  {service.title}
+                </h3>
+                <p className="mt-1.5 text-xs text-[#D5E0FF]/65 line-clamp-2 leading-relaxed">
+                  {service.shortDesc}
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-[#D5E0FF]/10 flex items-center justify-between mt-3">
+                <span className="text-[10px] font-mono text-[#7099FF] uppercase tracking-wider">
+                  Tap for dossier
+                </span>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onOpenQuoteWithService(service.title);
+                  }}
+                  className="hubtown-btn-solid text-[10px] py-1.5 px-3 flex items-center gap-1"
+                >
+                  <span>RFQ</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop View (>= lg): Sticky Fullscreen Viewport Window (Hubtown Pinned Scroll) */}
+      <div className="hidden lg:flex sticky top-0 h-screen w-full overflow-hidden flex-col justify-between py-6 sm:py-8 z-20">
         {/* Background Ambient Radial Glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#7099FF]/10 blur-[150px] rounded-full" />

@@ -28,17 +28,17 @@ export default function Navbar({
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-12 pt-4 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 lg:px-12 pt-3 sm:pt-4 pointer-events-none">
       <div className="container mx-auto max-w-7xl flex items-center justify-between pointer-events-auto">
         {/* Hubtown Floating Glass Bar */}
-        <div className={`w-full flex items-center justify-between px-5 sm:px-7 py-3.5 rounded-2xl transition-all duration-500 border ${
+        <div className={`w-full flex items-center justify-between px-3.5 sm:px-7 py-2.5 sm:py-3.5 rounded-2xl transition-all duration-500 border ${
           isScrolled
             ? "bg-[#020A19]/85 backdrop-blur-2xl border-[#D5E0FF]/20 shadow-2xl shadow-black/80"
             : "bg-[#020A19]/60 backdrop-blur-xl border-[#D5E0FF]/10 shadow-lg"
         }`}>
           {/* Brand Logo & Editorial Title */}
-          <Link href="#home" className="flex items-center gap-3.5 group">
-            <div className="relative w-9 h-9 rounded-xl bg-white p-1 border border-[#D5E0FF]/30 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105 shadow-md shadow-[#D5E0FF]/10">
+          <Link href="#home" className="flex items-center gap-2.5 sm:gap-3.5 group">
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white p-1 border border-[#D5E0FF]/30 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105 shadow-md shadow-[#D5E0FF]/10 flex-shrink-0">
               <Image
                 src={getAssetPath("/images/logo.png")}
                 alt="Success Engineering Logo"
@@ -49,10 +49,10 @@ export default function Navbar({
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm sm:text-base font-bold tracking-tight uppercase text-white font-['Space_Grotesk'] leading-none">
+              <span className="text-xs sm:text-base font-bold tracking-tight uppercase text-white font-['Space_Grotesk'] leading-none">
                 Success Engineering
               </span>
-              <span className="text-[10px] font-mono text-[#D5E0FF]/70 uppercase tracking-widest mt-0.5">
+              <span className="hidden sm:block text-[10px] font-mono text-[#D5E0FF]/70 uppercase tracking-widest mt-0.5">
                 Precision Manufacturing // Kakkalur
               </span>
             </div>
@@ -99,12 +99,12 @@ export default function Navbar({
           </nav>
 
           {/* Right Action Cluster */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Hubtown Solid Light Button */}
             <button
               onClick={onOpenQuote}
               data-cursor="RFQ"
-              className="hubtown-btn-solid text-xs py-2 px-4 sm:px-5 group"
+              className="hidden sm:inline-flex hubtown-btn-solid text-xs py-2 px-4 sm:px-5 group"
             >
               <span>Request RFQ</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-45" />

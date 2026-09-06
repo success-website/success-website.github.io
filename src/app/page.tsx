@@ -62,7 +62,6 @@ export default function HomePage() {
         <MobileOverlay
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
-          onOpenSearch={() => setIsSearchOpen(true)}
           onOpenQuote={() => {
             setQuotePreselectedService("");
             setIsQuoteOpen(true);

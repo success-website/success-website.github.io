@@ -20,25 +20,25 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-[#010712] text-[#D5E0FF] pt-24 pb-12 relative overflow-hidden select-none border-t border-[#D5E0FF]/15">
+    <footer id="contact" className="bg-[#010712] text-[#D5E0FF] pt-16 pb-10 sm:pt-24 sm:pb-12 relative overflow-hidden select-none border-t border-[#D5E0FF]/15">
       {/* Subtle Background Architectural Brand Mark */}
-      <div className="absolute -bottom-10 right-0 pointer-events-none opacity-5 font-black text-9xl tracking-tighter text-[#D5E0FF]">
+      <div className="absolute -bottom-10 right-0 pointer-events-none opacity-5 font-black text-7xl sm:text-9xl tracking-tighter text-[#D5E0FF]">
         SUCCESS
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-[#D5E0FF]/15">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pb-12 sm:pb-20 border-b border-[#D5E0FF]/15">
           {/* Left Column: Brand & Newsletter */}
-          <div className="lg:col-span-6 space-y-8">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             <div>
-              <span className="hubtown-tag text-xs mb-3">
+              <span className="hubtown-tag text-[10px] sm:text-xs mb-2 sm:mb-3">
                 [ STAY CONNECTED ]
               </span>
-              <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#D5E0FF] mt-2">
+              <h3 className="text-xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#D5E0FF] mt-2">
                 Subscribe to Manufacturing Bulletins.
               </h3>
-              <p className="text-sm text-[#D5E0FF]/70 mt-2 max-w-md leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#D5E0FF]/70 mt-2 max-w-md leading-relaxed">
                 Receive quarterly metallurgical whitepapers, tooling optimization guides, and machinery expansion notices directly in your inbox.
               </p>
             </div>
@@ -52,11 +52,11 @@ export default function Footer() {
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Enter your business email"
-                  className="w-full bg-transparent px-4 py-2 text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/40 outline-none font-medium"
+                  className="w-full bg-transparent px-3.5 sm:px-4 py-2 text-base sm:text-sm text-[#D5E0FF] placeholder:text-[#D5E0FF]/40 outline-none font-medium"
                 />
                 <button
                   type="submit"
-                  className="hubtown-btn-solid text-xs py-2 px-5 flex-shrink-0"
+                  className="hubtown-btn-solid text-xs py-2 px-4 sm:px-5 flex-shrink-0"
                 >
                   {subscribed ? (
                     <>
