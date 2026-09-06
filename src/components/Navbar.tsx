@@ -3,19 +3,16 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, ArrowUpRight, Menu, X, ShieldCheck, Activity } from "lucide-react";
-import { COMPANY_INFO } from "@/data/websiteData";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { getAssetPath } from "@/lib/basePath";
 
 interface NavbarProps {
-  onOpenSearch: () => void;
   onOpenQuote: () => void;
   onToggleMobileMenu: () => void;
   isMobileMenuOpen: boolean;
 }
 
 export default function Navbar({
-  onOpenSearch,
   onOpenQuote,
   onToggleMobileMenu,
   isMobileMenuOpen,
@@ -103,16 +100,6 @@ export default function Navbar({
 
           {/* Right Action Cluster */}
           <div className="flex items-center gap-3">
-            {/* Search Trigger */}
-            <button
-              onClick={onOpenSearch}
-              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#D5E0FF]/15 hover:border-[#D5E0FF]/40 text-xs font-mono text-[#D5E0FF]/70 hover:text-white transition-all bg-[#D5E0FF]/5"
-              title="Search System Index"
-            >
-              <Search className="w-3.5 h-3.5" />
-              <span className="text-[11px] uppercase tracking-wider">Search</span>
-            </button>
-
             {/* Hubtown Solid Light Button */}
             <button
               onClick={onOpenQuote}

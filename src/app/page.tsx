@@ -50,7 +50,6 @@ export default function HomePage() {
 
         {/* Floating Capsule Navbar */}
         <Navbar
-          onOpenSearch={() => setIsSearchOpen(true)}
           onOpenQuote={() => {
             setQuotePreselectedService("");
             setIsQuoteOpen(true);
